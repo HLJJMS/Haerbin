@@ -20,10 +20,11 @@ class LoaddingView() : PopupWindow() {
     lateinit var animation: Animation
     lateinit var img: ImageView
     lateinit var view: View
-
+    lateinit var rootView: View
     /*次构造方法*/
-    constructor(context: Context) : this() {
+    constructor(context: Context,rootView:View) : this() {
         this.context = context
+        this.rootView = rootView
         setPopupWindow()
     }
 
@@ -58,7 +59,7 @@ class LoaddingView() : PopupWindow() {
     }
 
     fun show() {
-        this.showAtLocation(view, Gravity.CENTER, 0, 0)
+        this.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
 }

@@ -68,14 +68,15 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun showLoading(){
             if(null==loaddingView){
-                loaddingView = LoaddingView(this)
+                loaddingView = LoaddingView(applicationContext,window.decorView)
             }
         loaddingView?.show()
+
     }
 
     fun hideLoading(){
         if(null==loaddingView){
-            loaddingView = LoaddingView(this)
+            loaddingView = LoaddingView(applicationContext,window.decorView)
         }
         loaddingView?.dismiss()
     }
