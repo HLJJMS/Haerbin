@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.diwaves.news.R;
+import com.example.haerbin.R;
+
 
 public class MyTitleBar extends LinearLayout {
     ImageView iv_back, iv_end;
