@@ -3,17 +3,118 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tab"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="6.5dp"
+            android:src="@mipmap/ic_home_on"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_work"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="6.5dp"
+            android:src="@mipmap/ic_work_off"
+            app:layout_constraintEnd_toStartOf="@id/iv_interaction"
+            app:layout_constraintStart_toEndOf="@id/iv_home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/iv_interaction"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="6.5dp"
+            android:src="@mipmap/ic_interaction_off"
+            app:layout_constraintEnd_toStartOf="@id/iv_my"
+            app:layout_constraintStart_toEndOf="@id/iv_work"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_my"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginEnd="26dp"
+            android:src="@mipmap/ic_my_off"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginBottom="4.5dp"
+            android:text="首页"
+            android:textColor="#ff000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@id/iv_home"
+            app:layout_constraintStart_toStartOf="@id/iv_home"
+            app:layout_constraintTop_toBottomOf="@id/iv_home" />
+
+        <TextView
+            android:id="@+id/tv_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginBottom="4.5dp"
+            android:text="办事"
+            android:textColor="#ff000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@id/iv_work"
+            app:layout_constraintStart_toStartOf="@id/iv_work"
+            app:layout_constraintTop_toBottomOf="@id/iv_work" />
+
+
+
+        <TextView
+            android:id="@+id/tv_interaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginBottom="4.5dp"
+            android:text="互动"
+            android:textColor="#ff000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@id/iv_interaction"
+            app:layout_constraintStart_toStartOf="@id/iv_interaction"
+            app:layout_constraintTop_toBottomOf="@id/iv_interaction" />
+
+
+        <TextView
+            android:id="@+id/tv_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginBottom="4.5dp"
+            android:text="我的"
+            android:textColor="#ff000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@id/iv_my"
+            app:layout_constraintStart_toStartOf="@id/iv_my"
+            app:layout_constraintTop_toBottomOf="@id/iv_my" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
