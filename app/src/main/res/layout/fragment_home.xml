@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".framgent.HomeFragment">
 
     <ScrollView
@@ -25,29 +26,169 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
                 android:text="五常无忧办"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
+
             <TextView
-                app:layout_constraintStart_toStartOf="@id/tv_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
-                android:textColor="@color/white"
-                android:text="把方便给群众，把服务给政府"
                 android:id="@+id/tv_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="把方便给群众，把服务给政府"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
                 tools:ignore="MissingConstraints" />
+
             <EditText
-                app:layout_constraintTop_toBottomOf="@id/tv_detail"
-                app:layout_constraintStart_toStartOf="@id/tv_detail"
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="13dp"
                 android:background="@drawable/bg_home_edit"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"/>
+                android:hint="请输入需要查询的办事项目"
+                android:paddingStart="30dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColorHint="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toStartOf="@id/iv_person"
+                app:layout_constraintStart_toStartOf="@id/tv_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="6dp"
+                android:src="@mipmap/ic_search"
+                app:layout_constraintBottom_toBottomOf="@id/et_search"
+                app:layout_constraintStart_toStartOf="@id/et_search"
+                app:layout_constraintTop_toTopOf="@id/et_search" />
+
+            <ImageView
+                android:id="@+id/iv_robort"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="8dp"
+                android:src="@mipmap/ic_robort"
+                app:layout_constraintBottom_toBottomOf="@id/et_search"
+                app:layout_constraintEnd_toEndOf="@id/et_search"
+                app:layout_constraintTop_toTopOf="@id/et_search" />
+
+            <ImageView
+                android:id="@+id/iv_sun"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="25dp"
+                android:src="@mipmap/ic_sun"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_centigrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="19 C"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintEnd_toStartOf="@id/iv_sun"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+            <ImageView
+                android:id="@+id/iv_person"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="25dp"
+                android:src="@mipmap/ic_home_user"
+                app:layout_constraintBottom_toBottomOf="@id/et_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/et_search" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_conner3_solid_white"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/et_search">
+
+                <ImageView
+                    android:id="@+id/iv_hot"
+                    android:layout_width="61dp"
+                    android:layout_height="61dp"
+                    android:src="@mipmap/ic_zixin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="10dp"
+                    android:text="陈萌山来我市调研粮食生产..."
+                    android:textColor="#ff666666"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_go"
+                    app:layout_constraintStart_toEndOf="@id/v_1" />
+
+                <View
+                    android:id="@+id/v_1"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_blue_point"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_1"
+                    app:layout_constraintStart_toEndOf="@id/iv_hot"
+                    app:layout_constraintTop_toTopOf="@id/tv_1" />
+
+                <View
+                    android:id="@+id/v_2"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_blue_point"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_2"
+                    app:layout_constraintStart_toEndOf="@id/iv_hot"
+                    app:layout_constraintTop_toTopOf="@id/tv_2" />
+
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="10dp"
+                    android:text="陈萌山来我市调研粮食生产..."
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ff666666"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/iv_go"
+                    app:layout_constraintStart_toEndOf="@id/v_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_go"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/ic_government"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
