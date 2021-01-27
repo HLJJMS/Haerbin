@@ -1,61 +1,106 @@
 package com.example.haerbin.framgent
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.haerbin.R
+import com.example.haerbin.activity.ImageActivity
+import com.example.haerbin.adapter.MyBannerAdapter
+import com.jakewharton.rxbinding3.view.clicks
+import com.youth.banner.config.BannerConfig
+import com.youth.banner.config.IndicatorConfig
+import com.youth.banner.indicator.CircleIndicator
+import com.youth.banner.util.BannerUtils
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.concurrent.TimeUnit
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var bannerList: MutableList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onStart() {
+        super.onStart()
+        intData()
+    }
 
-                }
+    private fun intData() {
+        aboutBanner()
+        iv_xin.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, ImageActivity::class.java).putExtra(
+                    "src",
+                    R.mipmap.bg_xin
+                )
+            )
+        }
+        iv_ren.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, ImageActivity::class.java).putExtra(
+                    "src",
+                    R.mipmap.bg_ren
+                )
+            )
+        }
+        iv_yi.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, ImageActivity::class.java).putExtra(
+                    "src",
+                    R.mipmap.bg_yi
+                )
+            )
+        }
+        iv_li.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, ImageActivity::class.java).putExtra(
+                    "src",
+                    R.mipmap.bg_li
+                )
+            )
+        }
+        iv_zhi.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, ImageActivity::class.java).putExtra(
+                    "src",
+                    R.mipmap.bg_zhi
+                )
+            )
+        }
+    }
+
+    private fun aboutBanner() {
+        bannerList.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3391498281,3823931926&fm=26&gp=0.jpg")
+        bannerList.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3235533835,2851899931&fm=26&gp=0.jpg")
+        bannerList.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3649562530,349368102&fm=26&gp=0.jpg")
+        bannerList.add("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1095842389,147168690&fm=26&gp=0.jpg")
+        var myBeannerAdapter: MyBannerAdapter = MyBannerAdapter(bannerList, context)
+        banner.adapter = myBeannerAdapter
+        banner.setIndicator(CircleIndicator(context))
+        banner.setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+        banner.setIndicatorMargins(
+            IndicatorConfig.Margins(
+                0, 0,
+                BannerConfig.INDICATOR_MARGIN, BannerUtils.dp2px(12f).toInt()
+            )
+        )
+        myBeannerAdapter.setOnClickItemListener(object : MyBannerAdapter.OnClickItemListener {
+            override fun clickItemListener(url: String?) {
+
             }
+        })
     }
 }
