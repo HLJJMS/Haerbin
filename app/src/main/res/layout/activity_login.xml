@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.LoginActivity">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:end_txt="验证码登录"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="43dp"
+        android:text="五常·无忧办APP"
+        android:textColor="#ff333333"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <TextView
+        android:id="@+id/tv_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="登录后更精彩"
+        android:textColor="#ff7f7f7f"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="36dp"
+        android:hint="请输入手机号"
+        android:paddingBottom="20dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title2" />
+
+    <EditText
+        android:id="@+id/et_psw"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="请输入密码"
+        android:paddingBottom="20dp"
+        android:textColor="#ff999999"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/et_phone"
+        app:layout_constraintStart_toStartOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="5dp"
+        android:src="@mipmap/ic_close"
+        app:layout_constraintBottom_toBottomOf="@id/et_phone"
+        app:layout_constraintEnd_toEndOf="@id/et_phone"
+        app:layout_constraintTop_toTopOf="@id/et_phone" />
+
+    <ImageView
+        android:id="@+id/iv_eye"
+        android:layout_width="16dp"
+        android:layout_height="9dp"
+        android:layout_marginEnd="5dp"
+        android:src="@mipmap/ic_eye_off"
+        app:layout_constraintBottom_toBottomOf="@id/et_psw"
+        app:layout_constraintEnd_toEndOf="@id/et_psw"
+        app:layout_constraintTop_toTopOf="@id/et_psw" />
+
+    <TextView
+        android:id="@+id/tv_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="忘记密码？"
+        android:textColor="#ff333333"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/et_psw" />
+
+    <RadioButton
+        android:id="@+id/rb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/tv_forget" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我已阅读《服务协议》和《隐私政策》"
+        android:textColor="#ff333333"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/rb"
+        app:layout_constraintTop_toTopOf="@id/rb" />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/color_2BA4D9"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="登录"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_forget" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/tv_ok"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/tv_forget"
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="还没有账号，"
+        android:textColor="#ff333333"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/tv_register"
+        app:layout_constraintTop_toTopOf="@id/register"
+        app:layout_constraintStart_toEndOf="@id/register"
+        android:textSize="12sp"
+        android:textColor="@color/color_1084e6"
+        android:layout_width="wrap_content"
+        android:text="注册新账号？"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

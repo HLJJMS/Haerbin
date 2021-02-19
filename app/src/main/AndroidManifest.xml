@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.haerbin">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -30,16 +29,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar">
-        <activity android:name=".activity.ImageActivity"></activity>
-
-
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.EditPswActivity" />
+        <activity android:name=".activity.EditPhoneActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.AgreementActivity" />
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".base.BaseActivity" />
     </application>
 
