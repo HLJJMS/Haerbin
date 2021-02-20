@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.haerbin.R
+import com.example.haerbin.activity.HandyActivity
 import com.example.haerbin.activity.ImageActivity
+import com.example.haerbin.activity.SearchActivity
 import com.example.haerbin.adapter.MyBannerAdapter
 import com.jakewharton.rxbinding3.view.clicks
 import com.youth.banner.config.BannerConfig
@@ -78,6 +80,16 @@ class HomeFragment : Fragment() {
                     "src",
                     R.mipmap.bg_zhi
                 )
+            )
+        }
+        et_search.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, SearchActivity::class.java)
+            )
+        }
+        iv_convenience.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity, HandyActivity::class.java)
             )
         }
     }

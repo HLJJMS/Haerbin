@@ -29,6 +29,7 @@
         android:background="@drawable/bg_conner10_solid_gray"
         android:hint="我要办身份证"
         android:paddingStart="41dp"
+        android:singleLine="true"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:textSize="13sp"

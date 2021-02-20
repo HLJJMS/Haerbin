@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.haerbin.network.Api.BASE_URL;
 
 public class MyRetrofit {
-     Retrofit retrofit;
+    Retrofit retrofit;
     OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
     public MyService service;
 

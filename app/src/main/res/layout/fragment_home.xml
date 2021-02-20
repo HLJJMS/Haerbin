@@ -57,6 +57,7 @@
                 android:paddingStart="30dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
+                android:editable="false"
                 android:textColorHint="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toStartOf="@id/iv_person"
