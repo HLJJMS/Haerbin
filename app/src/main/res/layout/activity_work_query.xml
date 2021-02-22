@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.WorkQueryActivity">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_txt="办事查询"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="15dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_dowork"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:padding="20dp"
+
+        app:layout_constraintTop_toBottomOf="@id/iv_img">
+
+        <ImageView
+            android:id="@+id/iv_number"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@mipmap/ic_dowork_number"
+            app:layout_constraintBottom_toBottomOf="@id/tv_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_number" />
+
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="申请编号："
+            android:textColor="#ff525252"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/iv_number"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:paddingStart="50dp"
+            android:id="@+id/et_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_number"
+            app:layout_constraintTop_toTopOf="@id/tv_number" />
+
+        <ImageView
+            android:id="@+id/iv_key"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@mipmap/ic_dowork_key"
+            app:layout_constraintBottom_toBottomOf="@id/tv_key"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_key" />
+
+        <TextView
+            android:id="@+id/tv_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="申请编号："
+            android:textColor="#ff525252"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/iv_key"
+            app:layout_constraintTop_toBottomOf="@id/tv_number" />
+        <EditText
+            android:paddingStart="50dp"
+            android:id="@+id/et_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_key"
+            app:layout_constraintTop_toTopOf="@id/tv_key" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击“立即查询”，展示全部查询结果"
+        android:textColor="#ff8b8b8b"
+        android:textSize="13sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+
+        android:layout_marginEnd="30dp"
+        android:background="@color/color_137ed0"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cl" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.haerbin.bean;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -82,7 +83,15 @@ public class HandyListBean {
             this.list = list;
         }
 
-        public static class ListDTO {
+        public static class ListDTO implements MultiItemEntity {
+            public ListDTO(Integer handyId, String title, String linkurl, String icon, int type) {
+                this.handyId = handyId;
+                this.title = title;
+                this.linkurl = linkurl;
+                this.icon = icon;
+                this.type = type;
+            }
+
             /**
              * handy_id : 1
              * title : 法医临床司法鉴定机构
@@ -97,7 +106,16 @@ public class HandyListBean {
             @SerializedName("linkurl")
             private String linkurl;
             @SerializedName("icon")
-            private String icon;
+            private String icon="";
+            private int type = 0;
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
 
             public Integer getHandyId() {
                 return handyId;
@@ -129,6 +147,11 @@ public class HandyListBean {
 
             public void setIcon(String icon) {
                 this.icon = icon;
+            }
+
+            @Override
+            public int getItemType() {
+                return type;
             }
         }
     }

@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.haerbin.R
-import com.example.haerbin.activity.HandyActivity
-import com.example.haerbin.activity.ImageActivity
-import com.example.haerbin.activity.SearchActivity
+import com.example.haerbin.activity.*
 import com.example.haerbin.adapter.MyBannerAdapter
 import com.jakewharton.rxbinding3.view.clicks
 import com.youth.banner.config.BannerConfig
@@ -90,6 +88,16 @@ class HomeFragment : Fragment() {
         iv_convenience.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             startActivity(
                 Intent(activity, HandyActivity::class.java)
+            )
+        }
+        iv_government.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  GovermentServiceActivity::class.java)
+            )
+        }
+        iv_work_search.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  WorkQueryActivity::class.java)
             )
         }
     }
