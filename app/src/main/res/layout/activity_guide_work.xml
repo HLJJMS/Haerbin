@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".activity.GuideWorkActivity"
+    tools:deviceIds="wear">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_txt="引导办事"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:paddingEnd="13dp"
+        android:text="个人主题"
+        android:textColor="#ff3d3d3d"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_company"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <TextView
+        android:id="@+id/tv_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:paddingStart="13dp"
+        android:text="法人主题"
+        android:textColor="#ff3d3d3d"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_person"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <View
+        android:id="@+id/v_person"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="17dp"
+        android:background="@color/color_017BD0"
+        app:layout_constraintEnd_toEndOf="@id/tv_person"
+        app:layout_constraintStart_toStartOf="@id/tv_person"
+        app:layout_constraintTop_toBottomOf="@id/tv_person" />
+
+    <View
+        android:id="@+id/v_company"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/color_017BD0"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/tv_company"
+        app:layout_constraintStart_toStartOf="@id/tv_company"
+        app:layout_constraintTop_toBottomOf="@id/tv_company" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/v_person" />
+</androidx.constraintlayout.widget.ConstraintLayout>

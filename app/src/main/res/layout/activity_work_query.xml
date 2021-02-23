@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="申请编号："
+            android:text="办理编号："
             android:textColor="#ff525252"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/iv_key"

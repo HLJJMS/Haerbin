@@ -31,7 +31,13 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.WorkQueryActivity"></activity>
+
+
+        <activity android:name=".activity.GuideWorkActivity">
+
+        </activity>
+        <activity android:name=".activity.AnnouncementListActivity" />
+        <activity android:name=".activity.WorkQueryActivity" />
         <activity android:name=".activity.GovermentServiceActivity" />
         <activity android:name=".activity.HandyActivity" />
         <activity android:name=".activity.SearchActivity" />

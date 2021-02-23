@@ -100,6 +100,11 @@ class HomeFragment : Fragment() {
                 Intent(activity,  WorkQueryActivity::class.java)
             )
         }
+        cl_bg1.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  AnnouncementListActivity::class.java)
+            )
+        }
     }
 
     private fun aboutBanner() {
