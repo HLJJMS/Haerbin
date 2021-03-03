@@ -9,6 +9,7 @@ class SPToll(context: Context) {
     val ID = "id"
     val PHONE = "phone"
     val PASSWORD = "password"
+    val TOKEN = "token"
     var preferences: SharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE)
     var editor: SharedPreferences.Editor = preferences.edit() //获取编辑器
     fun getId(): String {
@@ -36,6 +37,15 @@ class SPToll(context: Context) {
     fun setPassWord(password: String) {
         editor.putString(PASSWORD, password);
         editor.commit()
+    }
+
+    fun setToken(token: String) {
+        editor.putString(TOKEN, token);
+        editor.commit()
+    }
+
+    fun getToken(): String {
+        return preferences.getString(TOKEN, "").toString()
     }
 
 }

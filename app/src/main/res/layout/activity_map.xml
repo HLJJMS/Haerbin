@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MapActivity">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_txt="地图服务"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="部门列表"
+        android:textColor="@color/color_1084e6"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_map"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <TextView
+        android:id="@+id/tv_map"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="地图"
+        android:textColor="@color/color_414141"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_list"
+        app:layout_constraintTop_toTopOf="@id/tv_list" />
+
+    <View
+        android:id="@+id/v_list"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/color_1084e6"
+        app:layout_constraintBottom_toBottomOf="@id/tv_list"
+        app:layout_constraintEnd_toEndOf="@id/tv_list"
+        app:layout_constraintStart_toStartOf="@id/tv_list" />
+
+    <View
+        android:id="@+id/v_map"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/color_1084e6"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_map"
+        app:layout_constraintEnd_toEndOf="@id/tv_map"
+        app:layout_constraintStart_toStartOf="@id/tv_map" />
+
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@id/tv_name"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_map" />
+
+    <TextView
+        android:id="@+id/tv_go"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/bg_circle_blue"
+        android:gravity="center"
+        android:text="到这里去"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/bmapView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmapView" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="15dp"
+        android:text="五常市人民政府办公厅"
+        android:textColor="#ff2f2f2f"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+  app:layout_constraintBottom_toTopOf="@id/tv_address" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tv_phone"
+        android:text="地址：松北区世纪大道1号"
+        android:textColor="#ff2f2f2f"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        android:layout_marginBottom="15dp" />
+
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="电话：0451-12345678"
+        android:textColor="#ff2f2f2f"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_detail"
+        app:layout_constraintStart_toStartOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="简介:"
+        android:textColor="#ff2f2f2f"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toTopOf="@id/tv_detail" />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="9dp"
+        android:paddingEnd="27dp"
+        android:paddingBottom="20dp"
+        android:text="负责组织起草、审核以市政府、市政府办公厅名义发布的公文；负责市政府的公文运转 、档案管理、印信管理机要通信和保密工作"
+        android:textColor="#ff2f2f2f"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/detail" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_list" />
+</androidx.constraintlayout.widget.ConstraintLayout>
