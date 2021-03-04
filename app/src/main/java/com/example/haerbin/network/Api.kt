@@ -20,4 +20,22 @@ object Api {
 
     //部门详情
     const val DEPARTMENT_DETAIL = "department/detail"
+
+    // 个人注册1
+    const val REGISTER_PERSON_1 = "user/reg_person_1"
+
+    // 个人注册2
+    const val REGISTER_PERSON_2 = "user/reg_person_2"
+
+
+    const val REGISTER_COMPANY_1 = "user/reg_company_1"
+
+    const val REGISTER_COMPANY_2 = "user/reg_company_2"
+
+    const val REGISTER_COMPANY_3 = "user/reg_company_3"
+
+    const val REGISTER_SEND_CODE = "user/reg_send_sms"
+
+
+
 }

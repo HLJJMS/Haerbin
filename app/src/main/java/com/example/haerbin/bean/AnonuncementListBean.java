@@ -6,11 +6,7 @@ import java.util.List;
 
 public class AnonuncementListBean {
 
-    /**
-     * list : {"total":1,"per_page":10,"current_page":1,"last_page":1,"data":[{"notice_id":1,"title":"测试公告","linkurl":"","add_time":"2021-02-28"}]}
-     * code : 1
-     * msg : 成功
-     */
+
 
     @SerializedName("list")
     private ListDTO list;
@@ -44,13 +40,6 @@ public class AnonuncementListBean {
     }
 
     public static class ListDTO {
-        /**
-         * total : 1
-         * per_page : 10
-         * current_page : 1
-         * last_page : 1
-         * data : [{"notice_id":1,"title":"测试公告","linkurl":"","add_time":"2021-02-28"}]
-         */
 
         @SerializedName("total")
         private Integer total;

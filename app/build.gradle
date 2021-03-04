@@ -55,6 +55,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.wear:wear:1.0.0'
     implementation files('libs\\BaiduLBS_Android.jar')
+    implementation files('libs\\QWeather_Public_Android_V4.3.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

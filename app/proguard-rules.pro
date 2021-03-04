@@ -184,4 +184,6 @@
 -keep class com.baidu.vi.** {*;}
 -dontwarn com.baidu.**
 
-
+################天气预报#################
+ -dontwarn com.qweather.sdk.**
+ -keep class com.qweather.sdk.** { *;}

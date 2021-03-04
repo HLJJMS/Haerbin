@@ -1,4 +1,4 @@
-package com.example.haerbin.base;
+package com.example.haerbin.bean;
 
 public class EmptyBean {
     int code;

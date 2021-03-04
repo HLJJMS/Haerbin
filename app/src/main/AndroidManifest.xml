@@ -20,11 +20,10 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
@@ -35,13 +34,16 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.MapActivity"></activity>
+        <activity android:name=".activity.RegisterCompanyActivity"></activity>
+        <activity android:name=".activity.RegisterEndActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.MapActivity" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ofYf9VwTmi7eNgkPr7nRzOBg2WYxX713" />
 
-        <activity android:name=".activity.GuideWorkActivity"></activity>
+        <activity android:name=".activity.GuideWorkActivity" />
         <activity android:name=".activity.AnnouncementListActivity" />
         <activity android:name=".activity.WorkQueryActivity" />
         <activity android:name=".activity.GovermentServiceActivity" />
@@ -59,7 +61,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ImageActivity" />
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".base.BaseActivity" />
     </application>
 

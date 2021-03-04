@@ -37,11 +37,15 @@ class LoginActivity : BaseActivity() {
                 setEye(true)
             }
         }
+        tv_register.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
+            .subscribe {
+                startActivity(Intent(this, RegisterActivity::class.java))
+            }
         tv_ok.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe {
                 login()
             }
-        if( !SPToll(this@LoginActivity).getToken().equals("")){
+        if (!SPToll(this@LoginActivity).getToken().equals("")) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
     }
