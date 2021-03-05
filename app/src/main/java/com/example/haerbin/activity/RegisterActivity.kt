@@ -39,7 +39,7 @@ class RegisterActivity : BaseActivity() {
             }
         tv_ok.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe {
-                if(!et_phone.equals("")&&et_password.text.equals(et_confirm.text)){
+                if(!et_phone.equals("")&&et_password.text.toString().equals(et_confirm.text.toString())){
                     if(person){
                         personNet()
                     }else{

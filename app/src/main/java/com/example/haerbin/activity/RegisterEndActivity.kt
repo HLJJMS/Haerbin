@@ -28,7 +28,9 @@ class RegisterEndActivity : BaseActivity() {
         titleBar.setBackClick { finish() }
         tv_ok.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe {
-                if (et_name.text.equals("") || et_id.text.equals("") || et_phone.text.equals("") || et_code.text.equals(
+                if (et_name.text.toString().equals("") || et_id.text.toString()
+                        .equals("") || et_phone.text.toString()
+                        .equals("") || et_code.text.toString().equals(
                         ""
                     )
                 ) {
@@ -44,7 +46,7 @@ class RegisterEndActivity : BaseActivity() {
             }
         tv_send_code.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe {
-                if (!et_phone.text.equals("")) {
+                if (!et_phone.text.toString().equals("")) {
                     getCode()
                 } else {
                     MyToast().makeToast(this@RegisterEndActivity, "手机号不能为空")
@@ -117,12 +119,15 @@ class RegisterEndActivity : BaseActivity() {
     private val countDownTimer: CountDownTimer = object : CountDownTimer(60000, 1000) {
         //第一个参数表示总时间，第二个参数表示间隔时间。
         override fun onTick(millisUntilFinished: Long) {
-            tv_send_code.setText(millisUntilFinished.toString())
+            tv_send_code.setText(millisUntilFinished.toString().substring(0,2))
             tv_send_code.isClickable = false
+            tv_send_code.setBackgroundResource(R.color.color_A4A4A4)
         }
 
         override fun onFinish() {
             tv_send_code.isClickable = true
+            tv_send_code.setBackgroundResource(R.color.color_2BA4D9)
+            tv_send_code.setText("获取验证码")
         }
     }
 

@@ -105,6 +105,11 @@ class HomeFragment : Fragment() {
                 Intent(activity,  AnnouncementListActivity::class.java)
             )
         }
+        iv_public_resources.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  NewsListActivity::class.java)
+            )
+        }
     }
 
     private fun aboutBanner() {

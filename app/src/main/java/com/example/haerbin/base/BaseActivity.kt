@@ -96,7 +96,7 @@ abstract class BaseActivity : AppCompatActivity() {
     fun getWeather() {
         QWeather.getWeatherNow(
             this,
-            "CN101010100",
+            "127.157593,44.919418",
             Lang.ZH_HANS,
             Unit.METRIC,
             object : OnResultWeatherNowListener {

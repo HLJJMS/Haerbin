@@ -36,6 +36,7 @@ object Api {
 
     const val REGISTER_SEND_CODE = "user/reg_send_sms"
 
+    const val NEWS_LIST = "article/index"
 
 
 }

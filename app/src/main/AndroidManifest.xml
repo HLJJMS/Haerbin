@@ -34,7 +34,8 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.RegisterCompanyActivity"></activity>
+        <activity android:name=".activity.NewsListActivity"></activity>
+        <activity android:name=".activity.RegisterCompanyActivity" />
         <activity android:name=".activity.RegisterEndActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.MapActivity" />

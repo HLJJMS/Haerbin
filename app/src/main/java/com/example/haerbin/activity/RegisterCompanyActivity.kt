@@ -29,7 +29,8 @@ class RegisterCompanyActivity : BaseActivity() {
         titleBar.setBackClick { finish() }
         tv_ok.clicks().throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe {
-                if (et_company_name.text.equals("") || et_id.text.equals("") || et_name.text.equals(
+                if (et_company_name.text.toString().equals("") || et_id.text.toString()
+                        .equals("") || et_name.text.toString().equals(
                         ""
                     ) || et_code.text.equals("")
                 ) {
@@ -73,8 +74,10 @@ class RegisterCompanyActivity : BaseActivity() {
                             ).putExtra(
                                 "company_id",
                                 response.body()!!.companyId
-                            ).putExtra("user_id", intent.getStringExtra("user_id")).putExtra("company_id" ,
-                                response.body()!!.companyId)
+                            ).putExtra("user_id", intent.getStringExtra("user_id")).putExtra(
+                                "company_id",
+                                response.body()!!.companyId
+                            )
                         )
                     }
                     MyToast().makeToast(

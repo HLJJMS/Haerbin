@@ -6,6 +6,7 @@ import com.example.haerbin.bean.DepartmentListBean;
 import com.example.haerbin.bean.EmptyBean;
 import com.example.haerbin.bean.HandyListBean;
 import com.example.haerbin.bean.LoginBean;
+import com.example.haerbin.bean.NewsListBean;
 import com.example.haerbin.bean.RegisterBean;
 import com.example.haerbin.bean.RegisterCompanyBean;
 import com.example.haerbin.bean.RegisterPerson2Bean;
@@ -61,4 +62,8 @@ public interface MyService {
     @FormUrlEncoded
     Call<EmptyBean> registerCode(@Field("mobile") String mobile);
 
+
+    @POST(Api.NEWS_LIST)
+    @FormUrlEncoded
+    Call<NewsListBean> newsList(@Field("page") int page, @Field("search") String search);
 }
