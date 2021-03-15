@@ -36,7 +36,7 @@ class HandyActivity : BaseActivity() {
 
     fun getData() {
 
-        MyRetrofit().service.handyList().enqueue(object : Callback<HandyListBean> {
+        MyRetrofit(this).service.handyList().enqueue(object : Callback<HandyListBean> {
             override fun onFailure(call: Call<HandyListBean>, t: Throwable) {
                 Log.e("异常", t.toString())
             }

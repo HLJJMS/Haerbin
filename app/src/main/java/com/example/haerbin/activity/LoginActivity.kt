@@ -67,7 +67,7 @@ class LoginActivity : BaseActivity() {
     fun login() {
         if (!et_phone.text.equals("") && !et_psw.text.equals("")) {
             showLoading()
-            MyRetrofit().service.phoneLogin(et_phone.text.toString(), et_psw.text.toString())
+            MyRetrofit(this).service.phoneLogin(et_phone.text.toString(), et_psw.text.toString())
                 .enqueue(object :
                     Callback<LoginBean> {
                     override fun onFailure(call: Call<LoginBean>, t: Throwable) {

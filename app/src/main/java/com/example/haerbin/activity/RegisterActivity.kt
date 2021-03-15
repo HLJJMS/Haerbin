@@ -62,7 +62,7 @@ class RegisterActivity : BaseActivity() {
 
     fun personNet(){
         showLoading()
-        MyRetrofit().service.registerPersonOne(et_phone.text.toString(), et_password.text.toString())
+        MyRetrofit(this).service.registerPersonOne(et_phone.text.toString(), et_password.text.toString())
             .enqueue(object :
                 Callback<RegisterBean> {
                 override fun onFailure(call: Call<RegisterBean>, t: Throwable) {
@@ -83,7 +83,7 @@ class RegisterActivity : BaseActivity() {
 
     fun compenyNet(){
         showLoading()
-        MyRetrofit().service.registerCompanyOne(et_phone.text.toString(), et_password.text.toString())
+        MyRetrofit(this).service.registerCompanyOne(et_phone.text.toString(), et_password.text.toString())
             .enqueue(object :
                 Callback<RegisterBean> {
                 override fun onFailure(call: Call<RegisterBean>, t: Throwable) {

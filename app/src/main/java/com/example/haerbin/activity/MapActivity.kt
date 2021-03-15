@@ -69,7 +69,7 @@ class MapActivity : BaseActivity() {
 
     //列表
     fun getList() {
-        MyRetrofit().service.departmentList("", 1).enqueue(object : Callback<DepartmentListBean> {
+        MyRetrofit(this).service.departmentList("", 1).enqueue(object : Callback<DepartmentListBean> {
             override fun onFailure(call: Call<DepartmentListBean>, t: Throwable) {
                 Log.e("异常", t.toString())
             }
@@ -90,7 +90,7 @@ class MapActivity : BaseActivity() {
 
     //详情
     fun getDetail(id: String) {
-        MyRetrofit().service.departmentDetail(id).enqueue(object : Callback<DepartMentDetailBean> {
+        MyRetrofit(this).service.departmentDetail(id).enqueue(object : Callback<DepartMentDetailBean> {
             override fun onFailure(call: Call<DepartMentDetailBean>, t: Throwable) {
                 Log.e("异常", t.toString())
             }

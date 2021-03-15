@@ -1,6 +1,9 @@
 package com.example.haerbin.network;
 
+import android.content.Context;
+
 import com.chad.library.BuildConfig;
+import com.diwaves.news.tools.SPToll;
 import com.ihsanbal.logging.Level;
 import com.ihsanbal.logging.LoggingInterceptor;
 
@@ -18,8 +21,10 @@ public class MyRetrofit {
     Retrofit retrofit;
     OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
     public MyService service;
+    Context context;
 
-    public MyRetrofit() {
+    public MyRetrofit(Context context) {
+        this.context = context;
         setRetrofit();
     }
 
@@ -28,6 +33,7 @@ public class MyRetrofit {
                 .loggable(BuildConfig.DEBUG)
                 .setLevel(Level.BASIC)
                 .log(Platform.INFO)
+                .addHeader("token", new SPToll(context).getToken())
                 .request("Request")
                 .response("Response")
                 .build();

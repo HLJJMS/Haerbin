@@ -33,7 +33,7 @@ class NewsListActivity : BaseActivity() {
 
     fun getData() {
 
-        MyRetrofit().service.newsList(1, "")
+        MyRetrofit(this).service.newsList(1, "")
             .enqueue(object :
                 Callback<NewsListBean> {
                 override fun onFailure(call: Call<NewsListBean>, t: Throwable) {

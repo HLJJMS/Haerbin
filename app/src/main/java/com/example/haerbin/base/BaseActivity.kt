@@ -20,14 +20,12 @@ import kotlin.Unit as Unit1
 
 
 abstract class BaseActivity : AppCompatActivity() {
-    var myRetrofit: MyRetrofit = MyRetrofit()
-    var myService: MyService? = null
+
     var loaddingView: LoaddingView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //设置布局
         setContentView(initLayout());
-        myService = myRetrofit.service
         //初始化控件
         initView();
         //设置数据

@@ -48,7 +48,7 @@ class RegisterCompanyActivity : BaseActivity() {
 
     fun postData() {
         showLoading()
-        MyRetrofit().service.registerCompanyTwo(
+        MyRetrofit(this).service.registerCompanyTwo(
             intent.getStringExtra("id"),
             tv_company_name.text.toString(),
             tv_id.text.toString(),

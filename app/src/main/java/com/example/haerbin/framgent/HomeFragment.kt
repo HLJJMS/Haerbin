@@ -110,6 +110,16 @@ class HomeFragment : Fragment() {
                 Intent(activity,  NewsListActivity::class.java)
             )
         }
+        iv_complain.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  ComplainActivity::class.java)
+            )
+        }
+        iv_fault.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  ErrorActivity::class.java)
+            )
+        }
     }
 
     private fun aboutBanner() {

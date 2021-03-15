@@ -61,7 +61,7 @@ class RegisterEndActivity : BaseActivity() {
 
     fun getCode() {
         showLoading()
-        MyRetrofit().service.registerCode(et_phone.text.toString())
+        MyRetrofit(this).service.registerCode(et_phone.text.toString())
             .enqueue(object :
                 Callback<EmptyBean> {
                 override fun onFailure(call: Call<EmptyBean>, t: Throwable) {
@@ -84,7 +84,7 @@ class RegisterEndActivity : BaseActivity() {
 
     fun postPersonData() {
         showLoading()
-        MyRetrofit().service.registerPersonTwo(
+        MyRetrofit(this).service.registerPersonTwo(
             intent.getStringExtra("user_id"),
             et_name.text.toString(),
             "身份证",
@@ -134,7 +134,7 @@ class RegisterEndActivity : BaseActivity() {
 
     fun postCompanyData() {
         showLoading()
-        MyRetrofit().service.registerCompanyThree(
+        MyRetrofit(this).service.registerCompanyThree(
             intent.getStringExtra("user_id"),
             intent.getStringExtra("company_id"),
             et_name.text.toString(),

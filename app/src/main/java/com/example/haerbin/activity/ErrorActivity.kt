@@ -1,38 +1,42 @@
 package com.example.haerbin.activity
 
 import android.util.Log
-import com.diwaves.news.tools.MyToast
+import android.view.View
 import com.example.haerbin.R
 import com.example.haerbin.base.BaseActivity
 import com.example.haerbin.bean.EmptyBean
 import com.example.haerbin.network.MyRetrofit
 import com.jakewharton.rxbinding3.view.clicks
-
-import kotlinx.android.synthetic.main.activity_edit_psw.*
-
+import kotlinx.android.synthetic.main.activity_error.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
-//修改密码
-class EditPswActivity : BaseActivity() {
+//我要纠错
+class ErrorActivity : BaseActivity() {
+    var rb = "2"
     override fun initLayout(): Int {
-        return R.layout.activity_edit_psw
+        return R.layout.activity_error
     }
 
     override fun initView() {
-        titleBar.setBackClick {
-            finish()
+        titleBar.setBackClick { finish() }
+        rb_1.setOnClickListener {
+            rb = "1"
+            et_department.visibility = View.GONE
+            tv_department.visibility = View.GONE
+            v_department.visibility = View.GONE
         }
+        rb_2.setOnClickListener {
+            rb = "2"
+            et_department.visibility = View.VISIBLE
+            tv_department.visibility = View.VISIBLE
+            v_department.visibility = View.VISIBLE
+        }
+
         tv_ok.clicks().throttleFirst(500, TimeUnit.SECONDS).subscribe {
-            if (et_psw.text.toString().equals(et_newpsw.text.toString()) && !et_psw.text.toString()
-                    .equals("") && !et_newpsw.text.toString().equals("")
-            ) {
-                postData()
-            } else {
-                toast("新密码输入有误")
-            }
+            postData()
         }
     }
 
@@ -42,7 +46,12 @@ class EditPswActivity : BaseActivity() {
 
     fun postData() {
         showLoading()
-        MyRetrofit(this).service.editpsw(et_oldpsw.text.toString(), et_psw.text.toString())
+        MyRetrofit(this).service.postError(
+            rb,
+            et_department.text.toString(),
+            tv_content.text.toString()
+
+        )
             .enqueue(object :
                 Callback<EmptyBean> {
                 override fun onFailure(call: Call<EmptyBean>, t: Throwable) {
@@ -59,4 +68,6 @@ class EditPswActivity : BaseActivity() {
 
             })
     }
+
+
 }
