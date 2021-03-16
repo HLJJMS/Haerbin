@@ -1,6 +1,8 @@
 package com.example.haerbin.network;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.chad.library.BuildConfig;
 import com.diwaves.news.tools.SPToll;
@@ -34,6 +36,8 @@ public class MyRetrofit {
                 .setLevel(Level.BASIC)
                 .log(Platform.INFO)
                 .addHeader("token", new SPToll(context).getToken())
+                .addHeader("device", "Android")
+                .addHeader("version", getVersionName(context))
                 .request("Request")
                 .response("Response")
                 .build();
@@ -48,5 +52,16 @@ public class MyRetrofit {
         service = retrofit.create(MyService.class);
     }
 
+    private String getVersionName(Context context) {
+        PackageManager manager = context.getPackageManager();
+        String name = null;
+        try {
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            name = info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
+        return name;
+    }
 }

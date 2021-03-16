@@ -70,6 +70,10 @@ public interface MyService {
     @FormUrlEncoded
     Call<EmptyBean> editPhonCode(@Field("mobile") String mobile);
 
+    @POST(Api.SEND_MESSAGE)
+    @FormUrlEncoded
+    Call<EmptyBean> sendMessage(@Field("mobile") String mobile);
+
     @POST(Api.EDITPHONE)
     @FormUrlEncoded
     Call<EmptyBean> editPhon(@Field("mobile") String mobile, @Field("verify_code") String verify_code);
@@ -114,4 +118,10 @@ public interface MyService {
 
     @POST(Api.UPLOAD_FILE)
     Call<EmptyBean> upLoad(@Body RequestBody Body);
+
+    @POST(Api.CREATE_ASK)
+    @FormUrlEncoded
+    Call<EmptyBean> createAsk(@Field("realname") String realname, @Field("idcard") String idcard,@Field("mobile") String mobile, @Field("address") String address,@Field("email") String email,@Field("department") String department, @Field("item") String item, @Field("theme") String theme,@Field("content") String content,@Field("verify_code") String verify_code);
+
+
 }

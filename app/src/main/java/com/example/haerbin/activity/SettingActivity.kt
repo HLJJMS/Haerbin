@@ -18,7 +18,7 @@ class SettingActivity : BaseActivity() {
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+        
     }
 
 }

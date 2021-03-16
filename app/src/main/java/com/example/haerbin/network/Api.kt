@@ -41,6 +41,9 @@ object Api {
     //验证码改手机号
     const val EDITPHONE_SEND_CODE = "user/find_send_sms"
 
+    //发送验证码（普发）
+    const val SEND_MESSAGE = "user/send_sms"
+
     //新闻列表
     const val NEWS_LIST = "article/index"
 
@@ -73,5 +76,8 @@ object Api {
 
     //上传文件
     const val UPLOAD_FILE = "common/uploadfile"
+
+    //发起咨询
+    const val CREATE_ASK = "consult/submit"
 
 }

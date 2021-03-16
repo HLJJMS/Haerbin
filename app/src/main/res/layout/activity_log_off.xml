@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.LogOffActivity">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_txt="账户注销"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="11dp"
+        android:paddingTop="50dp"
+        android:text="注销后，您将放弃以下权益："
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <TextView
+        android:id="@+id/tv_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/color_e9e9e9"
+        android:paddingStart="22dp"
+        android:paddingTop="25dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="29dp"
+        android:text="1，您的所有交易记录将被清空，请确保所有交易已完成且无纠纷，账户注销后因历史交易可能产生的取消订单、维权等相关的资金退回等权益将视作自动放弃。\n\n\n
+2.您的身份信息、账户信息、积分累计、优惠券等会员权益将被清空且无法恢复。"
+        android:textColor="#ff6b6a6a"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="18dp"
+        android:text="点击下方“同意注销”按钮，即表示您已阅读并同意"
+        android:textColor="#ff828282"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_txt" />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/color_137ed0"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="同意销户"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_txt" />
+</androidx.constraintlayout.widget.ConstraintLayout>

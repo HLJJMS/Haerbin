@@ -34,10 +34,11 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.LogOffActivity"></activity>
+        <activity android:name=".activity.AskActivity" />
         <activity android:name=".activity.FeedBackActivity"></activity>
         <activity android:name=".activity.ErrorListActivity" />
         <activity android:name=".activity.ErrorActivity" />
-        <activity android:name=".adapter.MyCompaintActivity" />
         <activity android:name=".activity.MyCompaintListActivity" />
         <activity android:name=".activity.ComplainActivity" />
         <activity android:name=".activity.NewsListActivity" />

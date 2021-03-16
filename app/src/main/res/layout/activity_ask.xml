@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activity.ComplainActivity">
+    tools:context=".activity.AskActivity">
 
     <com.example.haerbin.tools.MyTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:center_txt="我要投诉"
+        app:center_txt="我要咨询"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
@@ -22,21 +22,51 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="match_parent"
+                android:layout_height="116dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/bg_goverment_service"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="19dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="7dp"
+                android:text="温馨提示：欢迎使用五常无忧办政务服务网站，本栏目设置主要是方便您本人APP的建设和各部门的网上工作移除
+询网上审批技术方面有关问题"
+                android:textColor="#ff7c7c7c"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/iv_img" />
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="15dp"
+                android:background="@color/color_137ed0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
 
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="18dp"
                 android:text="您的姓名："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <EditText
                 android:id="@+id/et_name"
@@ -54,24 +84,24 @@
                 app:layout_constraintTop_toTopOf="@id/tv_name" />
 
             <View
-                android:layout_width="0dp"
+                android:id="@+id/v_name"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
                 android:background="@color/color_e9e9e9"
-                app:layout_constraintEnd_toEndOf="@id/et_name"
-                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
             <TextView
                 android:id="@+id/tv_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+
                 android:layout_marginTop="36dp"
                 android:text="身份证号："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
             <EditText
@@ -103,12 +133,11 @@
                 android:id="@+id/tv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
                 android:text="电话号："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_id" />
 
             <EditText
@@ -136,63 +165,67 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_phone" />
 
             <TextView
-                android:id="@+id/tv_type"
+                android:id="@+id/tv_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
-                android:text="投诉类型："
+                android:text="手机验证码："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_phone" />
 
-            <RadioGroup
+            <EditText
+                android:id="@+id/et_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@id/tv_type"
+                android:layout_marginEnd="20dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请输入验证码"
+                android:paddingStart="13dp"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_code"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_type"
-                app:layout_constraintTop_toTopOf="@id/tv_type">
+                app:layout_constraintStart_toEndOf="@id/tv_code"
+                app:layout_constraintTop_toTopOf="@id/tv_code" />
 
-                <RadioButton
-                    android:id="@+id/rb_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="违纪投诉" />
-
-                <RadioButton
-                    android:id="@+id/rb_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:checked="false"
-                    android:text="违法投诉" />
-            </RadioGroup>
+            <TextView
+                android:id="@+id/tv_send_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_2BA4D9"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="6dp"
+                android:text="发送验证码"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/v_code"
+                app:layout_constraintTop_toTopOf="@id/et_code" />
 
             <View
+                android:id="@+id/v_code"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="17dp"
                 android:background="@color/color_e9e9e9"
-                app:layout_constraintEnd_toEndOf="@id/et_phone"
-                app:layout_constraintStart_toStartOf="@id/tv_phone"
-                app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+                app:layout_constraintEnd_toEndOf="@id/et_code"
+                app:layout_constraintStart_toStartOf="@id/tv_code"
+                app:layout_constraintTop_toBottomOf="@id/tv_code" />
 
             <TextView
                 android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
                 android:text="邮箱："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_type" />
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_code" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -223,12 +256,11 @@
                 android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
                 android:text="联系地址："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
             <EditText
@@ -259,12 +291,11 @@
                 android:id="@+id/tv_department"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
-                android:text="投诉部门："
+                android:text="咨询部门："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_address" />
 
             <EditText
@@ -293,19 +324,53 @@
 
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_thing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="36dp"
+                android:text="咨询事项："
+                android:textColor="#ff303342"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_department" />
+
+            <EditText
+                android:id="@+id/et_thing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请输入事项"
+                android:paddingStart="13dp"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_thing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_thing"
+                app:layout_constraintTop_toTopOf="@id/tv_thing" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/color_e9e9e9"
+                app:layout_constraintEnd_toEndOf="@id/et_thing"
+                app:layout_constraintStart_toStartOf="@id/tv_thing"
+                app:layout_constraintTop_toBottomOf="@id/tv_thing" />
+
+            <TextView
+                android:id="@+id/tv_them"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:text="投诉主题："
                 android:textColor="#ff303342"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_department" />
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_thing" />
 
             <EditText
-                android:id="@+id/et_title"
+                android:id="@+id/et_them"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -314,19 +379,19 @@
                 android:hint="请输入主题"
                 android:paddingStart="13dp"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_them"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_title"
-                app:layout_constraintTop_toTopOf="@id/tv_title" />
+                app:layout_constraintStart_toEndOf="@id/tv_them"
+                app:layout_constraintTop_toTopOf="@id/tv_them" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="17dp"
                 android:background="@color/color_e9e9e9"
-                app:layout_constraintEnd_toEndOf="@id/et_title"
-                app:layout_constraintStart_toStartOf="@id/tv_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                app:layout_constraintEnd_toEndOf="@id/et_them"
+                app:layout_constraintStart_toStartOf="@id/tv_them"
+                app:layout_constraintTop_toBottomOf="@id/tv_them" />
 
             <TextView
                 android:id="@+id/tv_content"
@@ -338,7 +403,7 @@
                 android:textColor="#ff303342"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                app:layout_constraintTop_toBottomOf="@id/tv_them" />
 
             <EditText
                 android:id="@+id/et_content"

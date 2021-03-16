@@ -120,6 +120,12 @@ class HomeFragment : Fragment() {
                 Intent(activity,  ErrorActivity::class.java)
             )
         }
+
+        iv_ask.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(activity,  AskActivity::class.java)
+            )
+        }
     }
 
     private fun aboutBanner() {

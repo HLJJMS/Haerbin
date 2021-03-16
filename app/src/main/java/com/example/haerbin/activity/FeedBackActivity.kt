@@ -5,11 +5,14 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Environment
 import android.util.Log
+import android.view.View
+import com.diwaves.news.tools.MyGlide
 import com.diwaves.news.tools.MyToast
 import com.example.haerbin.R
 import com.example.haerbin.base.BaseActivity
 import com.example.haerbin.bean.EmptyBean
 import com.example.haerbin.network.MyRetrofit
+import com.google.gson.Gson
 import com.jakewharton.rxbinding3.view.clicks
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.zhihu.matisse.Matisse
@@ -17,7 +20,9 @@ import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.engine.impl.GlideEngine
 import com.zhihu.matisse.internal.entity.CaptureStrategy
 import io.reactivex.rxjava3.functions.Consumer
+
 import kotlinx.android.synthetic.main.activity_feed_back.*
+
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -28,14 +33,14 @@ import top.zibin.luban.Luban
 import top.zibin.luban.OnCompressListener
 import java.io.File
 import java.util.concurrent.TimeUnit
-
+//反馈
 class FeedBackActivity : BaseActivity() {
-    var bt = "1"
+    var bt = "软件问题"
     var photoCode = 1001;
     lateinit var file: File
     var image1 = ""
-    var image2=""
-    var image3=""
+    var image2 = ""
+    var image3 = ""
     var imageType = 1
     override fun initLayout(): Int {
         return R.layout.activity_feed_back
@@ -43,12 +48,12 @@ class FeedBackActivity : BaseActivity() {
 
     override fun initView() {
         titleBar.setBackClick { finish() }
-        tv_soft.clicks().throttleFirst(500, TimeUnit.SECONDS).subscribe {
-            bt = "1"
+        tv_soft.setOnClickListener {
+            bt = "软件问题"
             btSetting()
         }
-        tv_other.clicks().throttleFirst(500, TimeUnit.SECONDS).subscribe {
-            bt = "2"
+        tv_other.setOnClickListener {
+            bt = "其他问题"
             btSetting()
         }
         iv_1.clicks().throttleFirst(500, TimeUnit.SECONDS).subscribe {
@@ -63,6 +68,9 @@ class FeedBackActivity : BaseActivity() {
             imageType = 3
             getPermissions()
         }
+        tv_ok.clicks().throttleFirst(500, TimeUnit.SECONDS).subscribe {
+            postData()
+        }
     }
 
     override fun initData() {
@@ -70,7 +78,7 @@ class FeedBackActivity : BaseActivity() {
     }
 
     fun btSetting() {
-        if (bt.equals("1")) {
+        if (bt.equals("软件问题")) {
             tv_soft.setTextColor(this.getResources().getColor(R.color.white))
             tv_soft.setBackgroundResource(R.color.color_137ED0)
             tv_other.setTextColor(this.getResources().getColor(R.color.color_A4A4A4))
@@ -81,30 +89,6 @@ class FeedBackActivity : BaseActivity() {
             tv_soft.setTextColor(this.getResources().getColor(R.color.color_A4A4A4))
             tv_soft.setBackgroundResource(R.color.color_CECECE)
         }
-    }
-
-    fun postData(body: RequestBody) {
-        showLoading()
-        MyRetrofit(this).service.upLoad(
-            body
-        )
-            .enqueue(object :
-                Callback<EmptyBean> {
-                override fun onFailure(call: Call<EmptyBean>, t: Throwable) {
-                    Log.e("异常", t.toString())
-                }
-
-                override fun onResponse(call: Call<EmptyBean>, response: Response<EmptyBean>) {
-                    if (response.body()?.code == 1) {
-                        finish()
-                    }
-                    toast(response.body()?.msg.toString())
-                    hideLoading()
-                }
-
-            })
-
-
     }
 
 
@@ -164,8 +148,8 @@ class FeedBackActivity : BaseActivity() {
                     builder.setType(MultipartBody.FORM)
                     var requestBody: RequestBody =
                         RequestBody.create("image/*".toMediaTypeOrNull(), file!!)
-                    builder.addFormDataPart("file", file?.name, requestBody)
-                    postData(builder.build())
+                    builder.addFormDataPart("file_data", file?.name, requestBody)
+                    postImage(builder.build())
                 }
 
                 override fun onError(e: Throwable?) {
@@ -178,4 +162,71 @@ class FeedBackActivity : BaseActivity() {
 
             }).launch();
     }
+
+
+    fun postImage(body: RequestBody) {
+        showLoading()
+        MyRetrofit(this).service.upLoad(
+            body
+        )
+            .enqueue(object :
+                Callback<EmptyBean> {
+                override fun onFailure(call: Call<EmptyBean>, t: Throwable) {
+                    Log.e("异常", t.toString())
+                }
+
+                override fun onResponse(call: Call<EmptyBean>, response: Response<EmptyBean>) {
+                    if (response.body()?.code == 1) {
+                        if (imageType == 1) {
+                            image1 = response.body()!!.data
+                            MyGlide.loadImage(this@FeedBackActivity, image1, iv_1)
+                            iv_2.visibility = View.VISIBLE
+                        } else if (imageType == 2) {
+                            image2 = response.body()!!.data
+                            MyGlide.loadImage(this@FeedBackActivity, image2, iv_2)
+                            iv_3.visibility = View.VISIBLE
+                        } else {
+                            image3 = response.body()!!.data
+                            MyGlide.loadImage(this@FeedBackActivity, image3, iv_3)
+                        }
+                    } else {
+                        toast(response.body()?.msg.toString())
+                    }
+
+                    hideLoading()
+                }
+
+            })
+
+
+    }
+
+
+    fun postData() {
+        showLoading()
+        var arg = arrayOf(image1, image2, image3)
+        MyRetrofit(this).service.postFeedBack(
+            et_name.text.toString(),
+            et_phone.text.toString(),
+            bt,
+            et_content.text.toString(),
+            Gson().toJson(arg)
+        )
+            .enqueue(object :
+                Callback<EmptyBean> {
+                override fun onFailure(call: Call<EmptyBean>, t: Throwable) {
+                    Log.e("异常", t.toString())
+                }
+
+                override fun onResponse(call: Call<EmptyBean>, response: Response<EmptyBean>) {
+                    if (response.body()?.code == 1) {
+                        finish()
+                    }
+                    toast(response.body()?.msg.toString())
+                    hideLoading()
+                }
+
+            })
+    }
+
 }
