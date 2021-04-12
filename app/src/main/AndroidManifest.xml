@@ -34,9 +34,10 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.LogOffActivity"></activity>
+        <activity android:name=".activity.ForGetPswActivity"></activity>
+        <activity android:name=".activity.LogOffActivity" />
         <activity android:name=".activity.AskActivity" />
-        <activity android:name=".activity.FeedBackActivity"></activity>
+        <activity android:name=".activity.FeedBackActivity" />
         <activity android:name=".activity.ErrorListActivity" />
         <activity android:name=".activity.ErrorActivity" />
         <activity android:name=".activity.MyCompaintListActivity" />
@@ -62,14 +63,15 @@
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.AgreementActivity" />
         <activity android:name=".activity.LoginActivity">
+        </activity>
+        <activity android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ImageActivity" />
-        <activity android:name=".activity.MainActivity" />
         <activity android:name=".base.BaseActivity" />
     </application>
 

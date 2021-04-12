@@ -1,6 +1,7 @@
 package com.example.haerbin.activity
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -114,19 +115,26 @@ class MainActivity : BaseActivity() {
     }
 
     fun setButton(i: Int) {
-        for (index in 0..3) {
-            if (i == index) {
-                buttonList.get(index).setImageResource(mTabEntities.get(index).tabSelectedIcon)
-                textList.get(index).setTextColor(ContextCompat.getColor(this, R.color.color_2BA4D9))
-                textList.get(index).text = mTabEntities.get(index).tabTitle
-            } else {
-                buttonList.get(index).setImageResource(mTabEntities.get(index).tabUnselectedIcon)
-                textList.get(index).setTextColor(ContextCompat.getColor(this, R.color.black))
-                textList.get(index).text = mTabEntities.get(index).tabTitle
-            }
+        if (i == 3 && SPToll(this).getToken().equals("")) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            for (index in 0..3) {
+                if (i == index) {
+                    buttonList.get(index).setImageResource(mTabEntities.get(index).tabSelectedIcon)
+                    textList.get(index)
+                        .setTextColor(ContextCompat.getColor(this, R.color.color_2BA4D9))
+                    textList.get(index).text = mTabEntities.get(index).tabTitle
+                } else {
+                    buttonList.get(index)
+                        .setImageResource(mTabEntities.get(index).tabUnselectedIcon)
+                    textList.get(index).setTextColor(ContextCompat.getColor(this, R.color.black))
+                    textList.get(index).text = mTabEntities.get(index).tabTitle
+                }
 
+            }
+            viewpager.currentItem = i
         }
-        viewpager.currentItem = i
+
 
     }
 

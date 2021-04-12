@@ -48,6 +48,10 @@ class LoginActivity : BaseActivity() {
         if (!SPToll(this@LoginActivity).getToken().equals("")) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
+        title_bar.setBackClick { finish() }
+        title_bar.setEndTextClick {
+
+        }
     }
 
     override fun initData() {

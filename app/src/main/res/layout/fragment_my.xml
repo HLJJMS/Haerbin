@@ -1,9 +1,499 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".framgent.MyFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="35dp"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <View
+                android:id="@+id/bg"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:background="@color/color_2CA4D9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="18dp"
+                android:src="@mipmap/ic_setting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/bg_loading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_conner20_solid_green"
+                android:paddingStart="20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="5dp"
+                android:text="已认证"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/iv_head"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="李欣妍"
+                android:textColor="#ffffffff"
+                android:textSize="26sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="18545124589"
+                android:textColor="#ffffffff"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+
+            <ImageView
+                android:id="@+id/iv_do"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_do"
+                app:layout_constraintBottom_toBottomOf="@id/tv_mydo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mydo" />
+
+            <TextView
+                android:id="@+id/mydo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:text="我的办件"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_do"
+                app:layout_constraintTop_toBottomOf="@id/bg" />
+
+            <TextView
+                android:id="@+id/tv_mydo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/mydo"
+                app:layout_constraintTop_toBottomOf="@id/mydo" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintBottom_toBottomOf="@id/iv_do"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/iv_do" />
+
+            <ImageView
+                android:id="@+id/iv_ask"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_ask"
+                app:layout_constraintBottom_toBottomOf="@id/tv_ask"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/ask" />
+
+            <TextView
+                android:id="@+id/ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:text="我的咨询"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_ask"
+                app:layout_constraintTop_toBottomOf="@id/bg" />
+
+            <TextView
+                android:id="@+id/tv_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/ask"
+                app:layout_constraintTop_toBottomOf="@id/ask" />
+
+            <ImageView
+                android:id="@+id/iv_complaint"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_complaint"
+                app:layout_constraintBottom_toBottomOf="@id/tv_complaint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/complaint" />
+
+            <TextView
+                android:id="@+id/complaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:text="我的投诉"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_complaint"
+                app:layout_constraintTop_toBottomOf="@id/tv_mydo" />
+
+            <TextView
+                android:id="@+id/tv_complaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/complaint"
+                app:layout_constraintTop_toBottomOf="@id/complaint" />
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintBottom_toBottomOf="@id/iv_complaint"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/iv_complaint" />
+
+            <ImageView
+                android:id="@+id/iv_fault"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_fault"
+                app:layout_constraintBottom_toBottomOf="@id/tv_fault"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/fault" />
+
+            <TextView
+                android:id="@+id/fault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="我的纠错"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_fault"
+                app:layout_constraintTop_toTopOf="@id/complaint" />
+
+            <TextView
+                android:id="@+id/tv_fault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/fault"
+                app:layout_constraintTop_toBottomOf="@id/fault" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="18dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintTop_toBottomOf="@id/tv_fault" />
+
+            <ImageView
+                android:id="@+id/iv_info"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_compnay_info"
+                app:layout_constraintBottom_toBottomOf="@id/tv_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/info" />
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:text="企业信息"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_info"
+                app:layout_constraintTop_toBottomOf="@id/line" />
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/info"
+                app:layout_constraintTop_toBottomOf="@id/info" />
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintBottom_toBottomOf="@id/iv_info"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/iv_info" />
+
+            <ImageView
+                android:id="@+id/iv_register"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_company_register"
+                app:layout_constraintBottom_toBottomOf="@id/tv_register"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/register" />
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="企业注册"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_register"
+                app:layout_constraintTop_toTopOf="@id/info" />
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/register"
+                app:layout_constraintTop_toBottomOf="@id/register" />
+
+
+            <ImageView
+                android:id="@+id/iv_rz"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_company_renzheng"
+                app:layout_constraintBottom_toBottomOf="@id/tv_rz"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rz" />
+
+            <TextView
+                android:id="@+id/rz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="34dp"
+                android:text="企业认证"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_rz"
+                app:layout_constraintTop_toBottomOf="@id/tv_register" />
+
+            <TextView
+                android:id="@+id/tv_rz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/rz"
+                app:layout_constraintTop_toBottomOf="@id/rz" />
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintBottom_toBottomOf="@id/iv_rz"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/iv_rz" />
+
+            <ImageView
+                android:id="@+id/iv_change"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/ic_my_company_change"
+                app:layout_constraintBottom_toBottomOf="@id/tv_change"
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/change" />
+
+            <TextView
+                android:id="@+id/change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="切换企业"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/iv_change"
+                app:layout_constraintTop_toTopOf="@id/rz" />
+
+            <TextView
+                android:id="@+id/tv_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="1个不通过"
+                android:textColor="#ffb1b1b1"
+                app:layout_constraintStart_toStartOf="@id/change"
+                app:layout_constraintTop_toBottomOf="@id/change" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="18dp"
+                android:background="@color/color_DFDFDF"
+                app:layout_constraintTop_toBottomOf="@id/tv_change" />
+
+            <ImageView
+                android:id="@+id/iv_agree"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="32dp"
+                android:src="@mipmap/iv_my_argee"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line1" />
+
+            <TextView
+                android:id="@+id/tv_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="意见建议"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_agree"
+                app:layout_constraintStart_toEndOf="@id/iv_agree"
+                app:layout_constraintTop_toTopOf="@id/iv_agree" />
+
+            <ImageView
+                android:id="@+id/go1"
+                android:layout_width="7dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="16dp"
+                android:src="@mipmap/ic_go"
+                app:layout_constraintBottom_toBottomOf="@id/iv_agree"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_agree" />
+
+            <ImageView
+                android:id="@+id/iv_my"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="32dp"
+                android:src="@mipmap/ic_my_about"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_agree" />
+
+            <TextView
+                android:id="@+id/tv_my"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="关于我们"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_my"
+                app:layout_constraintStart_toEndOf="@id/iv_my"
+                app:layout_constraintTop_toTopOf="@id/iv_my" />
+
+            <ImageView
+                android:id="@+id/go2"
+                android:layout_width="7dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="16dp"
+                android:src="@mipmap/ic_go"
+                app:layout_constraintBottom_toBottomOf="@id/iv_my"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_my" />
+
+            <ImageView
+                android:id="@+id/iv_vision"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="32dp"
+                android:src="@mipmap/ic_my_vision"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_my" />
+
+            <TextView
+                android:id="@+id/tv_vision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="当前版本"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_vision"
+                app:layout_constraintStart_toEndOf="@id/iv_vision"
+                app:layout_constraintTop_toTopOf="@id/iv_vision" />
+
+            <ImageView
+                android:id="@+id/go3"
+                android:layout_width="7dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="16dp"
+                android:src="@mipmap/ic_go"
+                app:layout_constraintBottom_toBottomOf="@id/iv_vision"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_vision" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,8 +33,9 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         intData()
     }
 

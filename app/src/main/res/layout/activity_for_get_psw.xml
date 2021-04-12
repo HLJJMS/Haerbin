@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.ForGetPswActivity"
+    tools:ignore="MissingConstraints">
+
+    <com.example.haerbin.tools.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="找回密码"
+        android:textColor="#ff2b2b2b"
+        android:textSize="29sp"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <TextView
+        android:id="@+id/tv_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingStart="70dp"
+        android:text="1.验证手机号码"
+        android:textColor="#ff757575"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:hint="请输入手机号"
+        android:paddingStart="20dp"
+        android:paddingBottom="20dp"
+        android:textColorHint="#ffc7cad3"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title1" />
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:hint="请输入验证码"
+        android:paddingStart="20dp"
+        android:paddingEnd="100dp"
+        android:paddingBottom="20dp"
+        android:textColorHint="#ffc7cad3"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送验证码"
+        android:textColor="#ff4e96eb"
+        android:textSize="11sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/et_code"
+        app:layout_constraintEnd_toEndOf="@id/et_code" />
+
+    <TextView
+        android:id="@+id/tv_title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingStart="70dp"
+        android:text="2.设置新密码"
+        android:textColor="#ff757575"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_code" />
+
+    <EditText
+        android:id="@+id/et_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:hint="请输入密码"
+        android:paddingStart="20dp"
+        android:paddingEnd="100dp"
+        android:paddingBottom="20dp"
+        android:textColorHint="#ffc7cad3"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title3" />
+
+    <ImageView
+        android:id="@+id/iv_psw_eye"
+        android:layout_width="16dp"
+        android:layout_height="9dp"
+        android:layout_marginEnd="5dp"
+        android:src="@mipmap/ic_eye_off"
+        app:layout_constraintBottom_toBottomOf="@id/et_psw"
+        app:layout_constraintEnd_toEndOf="@id/et_psw"
+        app:layout_constraintTop_toTopOf="@id/et_psw" />
+
+    <TextView
+        android:id="@+id/tv_title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6-18位字符，必须由数字，字母或符号两种以上组成"
+        android:textColor="#ff74798c"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/et_psw"
+        app:layout_constraintStart_toStartOf="@id/et_psw"
+        app:layout_constraintTop_toBottomOf="@id/et_psw" />
+
+
+    <EditText
+        android:id="@+id/et_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:hint="请输入再次密码"
+        android:paddingStart="20dp"
+        android:paddingEnd="100dp"
+        android:paddingBottom="20dp"
+        android:textColorHint="#ffc7cad3"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title4" />
+
+    <ImageView
+        android:id="@+id/iv_confirm_eye"
+        android:layout_width="16dp"
+        android:layout_height="9dp"
+        android:layout_marginEnd="5dp"
+        android:src="@mipmap/ic_eye_off"
+        app:layout_constraintBottom_toBottomOf="@id/et_confirm"
+        app:layout_constraintEnd_toEndOf="@id/et_confirm"
+        app:layout_constraintTop_toTopOf="@id/et_confirm" />
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/color_137ed0"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="完成并登陆"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/et_confirm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

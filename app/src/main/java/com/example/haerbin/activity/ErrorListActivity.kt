@@ -15,16 +15,23 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+//我的投诉
 class ErrorListActivity : BaseActivity() {
     var adapters = MyErrorAdapter()
+    var title = ""
     override fun initLayout(): Int {
         return R.layout.activity_error_list
     }
 
     override fun initView() {
+        title = intent.getStringExtra("title").toString()
+        if (title.equals("我的投诉")) {
+
+        }
+        titleBar.setCenterText(title)
         titleBar.setBackClick { finish() }
         recycler.adapter = adapters
-        recycler.layoutManager =  LinearLayoutManager(this)
+        recycler.layoutManager = LinearLayoutManager(this)
         adapters.addChildClickViewIds(R.id.iv_del)
         adapters.setOnItemChildClickListener { adapter, view, position ->
             del(adapters.data.get(position).faultId.toString())
@@ -59,7 +66,7 @@ class ErrorListActivity : BaseActivity() {
     }
 
 
-    fun del(id:String) {
+    fun del(id: String) {
         MyRetrofit(this).service.delError(id)
             .enqueue(object :
                 Callback<EmptyBean> {
