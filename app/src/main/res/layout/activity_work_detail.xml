@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.WorkDetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <com.example.haerbin.tools.MyTitleBar
+                android:id="@+id/titleBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:center_txt="办事指南"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:text="哈哈哈"
+                android:textSize="22sp"
+                app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="全省统一编码"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <ImageView
+                android:id="@+id/iv_star"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/ic_detail_star"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <ImageView
+                android:id="@+id/iv_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@mipmap/ic_detail_run"
+                app:layout_constraintBottom_toBottomOf="@id/iv_star"
+                app:layout_constraintStart_toEndOf="@id/iv_star" />
+
+            <ImageView
+                android:id="@+id/iv_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@mipmap/ic_detail_15"
+                app:layout_constraintBottom_toBottomOf="@id/iv_star"
+                app:layout_constraintStart_toEndOf="@id/iv_run"
+                app:layout_constraintTop_toTopOf="@id/iv_star" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_15" />
+
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_detail_window_on"
+                app:layout_constraintEnd_toStartOf="@id/img_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler" />
+
+            <ImageView
+                android:id="@+id/img_2"
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_detail_do_on"
+                app:layout_constraintEnd_toStartOf="@id/img_3"
+                app:layout_constraintStart_toEndOf="@id/img_1"
+                app:layout_constraintTop_toTopOf="@id/img_1" />
+
+            <ImageView
+                android:id="@+id/img_3"
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_detail_fount_on"
+                app:layout_constraintEnd_toStartOf="@id/img_4"
+                app:layout_constraintStart_toEndOf="@id/img_2"
+                app:layout_constraintTop_toTopOf="@id/img_1" />
+
+            <ImageView
+                android:id="@+id/img_4"
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_detail_ems_off"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_3"
+                app:layout_constraintTop_toTopOf="@id/img_1" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_CECECE"
+                app:layout_constraintTop_toBottomOf="@id/img_1" />
+
+            <ImageView
+                android:id="@+id/ic_do"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="11dp"
+                android:src="@mipmap/ic_detail_info"
+                app:layout_constraintBottom_toBottomOf="@id/tv_do"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_do" />
+
+            <TextView
+                android:id="@+id/tv_do"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="办理信息"
+                app:layout_constraintStart_toEndOf="@id/ic_do"
+                app:layout_constraintTop_toBottomOf="@id/line1" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_CECECE"
+                app:layout_constraintTop_toBottomOf="@id/tv_do" />
+
+            <ImageView
+                android:id="@+id/ic_address"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="11dp"
+                android:src="@mipmap/ic_address"
+                app:layout_constraintBottom_toBottomOf="@id/tv_address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_address" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="办理地址"
+                app:layout_constraintStart_toEndOf="@id/ic_do"
+                app:layout_constraintTop_toBottomOf="@id/line2" />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_CECECE"
+                app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+            <ImageView
+                android:id="@+id/ic_chart"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="11dp"
+                android:src="@mipmap/ic_chart"
+                app:layout_constraintBottom_toBottomOf="@id/tv_chart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_chart" />
+
+            <TextView
+                android:id="@+id/tv_chart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="流程图"
+                app:layout_constraintStart_toEndOf="@id/ic_do"
+                app:layout_constraintTop_toBottomOf="@id/line3" />
+
+            <View
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_CECECE"
+                app:layout_constraintTop_toBottomOf="@id/tv_chart" />
+
+            <ImageView
+                android:id="@+id/ic_cailiao"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="11dp"
+                android:src="@mipmap/ic_cailiao"
+                app:layout_constraintBottom_toBottomOf="@id/tv_cailaio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_cailaio" />
+
+            <TextView
+                android:id="@+id/tv_cailaio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="申请材料信息"
+                app:layout_constraintStart_toEndOf="@id/ic_do"
+                app:layout_constraintTop_toBottomOf="@id/line4" />
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_CECECE"
+                app:layout_constraintTop_toBottomOf="@id/tv_cailaio" />
+
+            <ImageView
+                android:id="@+id/ic_ask"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="11dp"
+                android:src="@mipmap/ic_what"
+                app:layout_constraintBottom_toBottomOf="@id/tv_ask"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_ask" />
+
+            <TextView
+                android:id="@+id/tv_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="常见问题"
+                app:layout_constraintStart_toEndOf="@id/ic_do"
+                app:layout_constraintTop_toBottomOf="@id/line5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

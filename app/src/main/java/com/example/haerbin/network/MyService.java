@@ -4,18 +4,21 @@ import com.example.haerbin.bean.AnonuncementListBean;
 import com.example.haerbin.bean.ComplaintBean;
 import com.example.haerbin.bean.DepartMentDetailBean;
 import com.example.haerbin.bean.DepartmentListBean;
+import com.example.haerbin.bean.DoWorkDetailBean;
 import com.example.haerbin.bean.EmptyBean;
 import com.example.haerbin.bean.ErrorBean;
 import com.example.haerbin.bean.HandyListBean;
+import com.example.haerbin.bean.LeadListBean;
 import com.example.haerbin.bean.LoginBean;
 import com.example.haerbin.bean.NewsListBean;
+import com.example.haerbin.bean.PrivateDoWorkBean;
+import com.example.haerbin.bean.PrivateListTwoBean;
 import com.example.haerbin.bean.RegisterBean;
 import com.example.haerbin.bean.RegisterCompanyBean;
 import com.example.haerbin.bean.RegisterPerson2Bean;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -122,6 +125,18 @@ public interface MyService {
     @POST(Api.CREATE_ASK)
     @FormUrlEncoded
     Call<EmptyBean> createAsk(@Field("realname") String realname, @Field("idcard") String idcard,@Field("mobile") String mobile, @Field("address") String address,@Field("email") String email,@Field("department") String department, @Field("item") String item, @Field("theme") String theme,@Field("content") String content,@Field("verify_code") String verify_code);
+
+    @GET(Api.PRIVATE_GUIDE)
+    Call<PrivateDoWorkBean> privateToDoH(@Query("search") String search,@Query("first_id") String first_id);
+
+    @GET(Api.PRIVATE_LIST)
+    Call<PrivateListTwoBean> privateToV(@Query("search") String search, @Query("first_id") String first_id, @Query("cate_id") String cate_id, @Query("depart_id") String depart_id, @Query("power_type_id") String power_type_id, @Query("page") String page);
+
+    @GET(Api.LEAD_INDEX)
+    Call<LeadListBean> leadIndex(@Query("search") String search, @Query("first_id") String first_id);
+
+    @GET(Api.GUIDE_DETAIL)
+    Call<DoWorkDetailBean> leadDetail(@Query("guide_id") String guide_id);
 
 
 }

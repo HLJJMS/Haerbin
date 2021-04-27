@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_goverment_service.*
 
 class GovermentServiceActivity : BaseActivity() {
     var adapters = GovermentServiceAdapter()
-    var list : MutableList<GovermentServiceBean> = arrayListOf()
+    var list: MutableList<GovermentServiceBean> = arrayListOf()
     override fun initLayout(): Int {
         return R.layout.activity_goverment_service
     }
@@ -27,10 +27,37 @@ class GovermentServiceActivity : BaseActivity() {
     }
 
     override fun initData() {
-        list.add(GovermentServiceBean(R.mipmap.ic_person_do, "个人办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_merchant_do, "法人办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_derpartment_do, "部门办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_guide, "引导办事", Intent()))
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_person_do, "个人办事", Intent(
+                    this,
+                    PrivateDoWorkActivity::class.java
+                ).putExtra("id", "1")
+            )
+        )
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_merchant_do, "法人办事", Intent(
+                    this,
+                    PrivateDoWorkActivity::class.java
+                ).putExtra("id", "2")
+            )
+        )
+        list.add(GovermentServiceBean(
+            R.mipmap.ic_derpartment_do, "部门办事", Intent(
+                this, GovermentListActivity::class.java
+            )
+        ))
+
+
+
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_guide,
+                "引导办事",
+                Intent(this, GuideWorkActivity::class.java)
+            )
+        )
         list.add(
             GovermentServiceBean(
                 R.mipmap.ic_map,

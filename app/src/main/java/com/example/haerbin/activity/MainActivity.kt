@@ -19,6 +19,7 @@ import com.example.haerbin.framgent.HomeFragment
 import com.example.haerbin.framgent.InterationFragment
 import com.example.haerbin.framgent.MyFragment
 import com.example.haerbin.framgent.WorkFragment
+import com.example.haerbin.tools.LoadingDialogView
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.jakewharton.rxbinding3.view.clicks
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,6 +47,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
+        showLoading()
         context = this
         mTabEntities.add(TabEntity("首页", R.mipmap.ic_home_on, R.mipmap.ic_home_off))
         mTabEntities.add(TabEntity("办事", R.mipmap.ic_work_on, R.mipmap.ic_work_off))

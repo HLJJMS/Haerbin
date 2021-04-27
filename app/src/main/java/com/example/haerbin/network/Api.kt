@@ -80,4 +80,17 @@ object Api {
     //发起咨询
     const val CREATE_ASK = "consult/submit"
 
+    //个人办事
+    const val PRIVATE_GUIDE = "guide/cate"
+
+    //个人办事2级列表
+
+    const val PRIVATE_LIST = "guide/index"
+
+    //引导办事
+    const val LEAD_INDEX = "lead/index"
+
+    //办事详情
+    const val  GUIDE_DETAIL ="guide/detail"
+
 }

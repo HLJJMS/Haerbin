@@ -104,6 +104,9 @@ class FeedBackActivity : BaseActivity() {
             });
     }
 
+
+
+
     fun getPhoto() {
         Matisse.from(this)
             .choose(MimeType.ofAll()) //是否只显示选择的类型的缩略图，就不会把所有图片视频都放在一起，而是需要什么展示什么

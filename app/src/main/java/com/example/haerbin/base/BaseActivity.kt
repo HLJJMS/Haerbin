@@ -2,39 +2,37 @@ package com.example.haerbin.base
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.diwaves.news.tools.LoaddingView
 import com.diwaves.news.tools.MyToast
-import com.example.haerbin.network.MyRetrofit
-import com.example.haerbin.network.MyService
+import com.example.haerbin.tools.LoadingDialogView
 import com.qweather.sdk.bean.base.Lang
 import com.qweather.sdk.bean.base.Unit
 import com.qweather.sdk.bean.weather.WeatherNowBean
 import com.qweather.sdk.view.HeConfig
 import com.qweather.sdk.view.QWeather
 import com.qweather.sdk.view.QWeather.OnResultWeatherNowListener
-import kotlin.Unit as Unit1
 
 
 abstract class BaseActivity : AppCompatActivity() {
-
-    var loaddingView: LoaddingView? = null
+    var loaddingView: LoadingDialogView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //设置布局
         setContentView(initLayout());
         //初始化控件
         initView();
-        //设置数据
-        initData();
-
+        loaddingView = LoadingDialogView(this)
         HeConfig.init("HE2103031652421650", "28eceb74711a4cf9ba4dccf1b8b3fa81");
         HeConfig.switchToDevService();
         getWeather()
+        initData()
+
     }
+
 
     /**
      * 初始化布局
@@ -53,6 +51,10 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     protected abstract fun initData()
 
+    override fun hasWindowFocus(): Boolean {
+        return super.hasWindowFocus()
+
+    }
 
     /**
      * 隐藏软键盘
@@ -77,18 +79,18 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun showLoading() {
-        if (null == loaddingView) {
-            loaddingView = LoaddingView(applicationContext, window.decorView)
+        if (null != loaddingView) {
+            loaddingView?.show()
         }
-        loaddingView?.show()
+
 
     }
 
     fun hideLoading() {
-        if (null == loaddingView) {
-            loaddingView = LoaddingView(applicationContext, window.decorView)
+        if (null != loaddingView) {
+            loaddingView?.dismiss()
         }
-        loaddingView?.dismiss()
+
     }
 
     fun getWeather() {
@@ -107,8 +109,10 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
             })
     }
-    fun toast(txt:String){
-        MyToast().makeToast(this,txt)
+
+    fun toast(txt: String) {
+        MyToast().makeToast(this, txt)
     }
+
 
 }

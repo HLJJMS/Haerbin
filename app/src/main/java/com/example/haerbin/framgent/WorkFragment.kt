@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.haerbin.R
+import com.example.haerbin.activity.GovermentListActivity
+import com.example.haerbin.activity.GuideWorkActivity
 import com.example.haerbin.activity.MapActivity
+import com.example.haerbin.activity.PrivateDoWorkActivity
 import com.example.haerbin.adapter.GovermentServiceAdapter
 import com.example.haerbin.bean.GovermentServiceBean
 import kotlinx.android.synthetic.main.activity_goverment_service.*
@@ -35,10 +38,36 @@ class WorkFragment : Fragment() {
     fun initData() {
         recycler.layoutManager = GridLayoutManager(context, 3)
         recycler.adapter = adapters
-        list.add(GovermentServiceBean(R.mipmap.ic_person_do, "个人办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_merchant_do, "法人办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_derpartment_do, "部门办事", Intent()))
-        list.add(GovermentServiceBean(R.mipmap.ic_guide, "引导办事", Intent()))
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_person_do, "个人办事", Intent(
+                    activity,
+                    PrivateDoWorkActivity::class.java
+                ).putExtra("id", "1")
+            )
+        )
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_merchant_do, "法人办事", Intent(
+                    activity,
+                    PrivateDoWorkActivity::class.java
+                ).putExtra("id", "2")
+            )
+        )
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_derpartment_do, "部门办事", Intent(
+                    activity, GovermentListActivity::class.java
+                )
+            )
+        )
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_guide,
+                "引导办事",
+                Intent(activity, GuideWorkActivity::class.java)
+            )
+        )
         list.add(
             GovermentServiceBean(
                 R.mipmap.ic_map,
@@ -52,5 +81,6 @@ class WorkFragment : Fragment() {
             startActivity(adapters.data.get(position).intent)
         }
     }
+
 
 }
