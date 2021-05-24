@@ -20,6 +20,7 @@ class AnnouncementListActivity : BaseActivity() {
     override fun initView() {
         titleBar.setBackClick { finish() }
         recycler.layoutManager = LinearLayoutManager(this)
+
     }
 
     override fun initData() {

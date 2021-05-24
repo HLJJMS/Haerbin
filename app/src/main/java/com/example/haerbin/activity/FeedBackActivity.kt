@@ -12,8 +12,10 @@ import com.example.haerbin.R
 import com.example.haerbin.base.BaseActivity
 import com.example.haerbin.bean.EmptyBean
 import com.example.haerbin.network.MyRetrofit
+import com.example.haerbin.tools.MyPermissions
 import com.google.gson.Gson
 import com.jakewharton.rxbinding3.view.clicks
+import com.tbruyelle.rxpermissions3.Permission
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
@@ -33,6 +35,7 @@ import top.zibin.luban.Luban
 import top.zibin.luban.OnCompressListener
 import java.io.File
 import java.util.concurrent.TimeUnit
+
 //反馈
 class FeedBackActivity : BaseActivity() {
     var bt = "软件问题"
@@ -93,18 +96,18 @@ class FeedBackActivity : BaseActivity() {
 
 
     fun getPermissions() {
-        val rxPermissions: RxPermissions = RxPermissions(this)
-        rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-            .subscribe(Consumer<Boolean>() {
-                if (it) {
-                    getPhoto()
-                } else {
-                    MyToast().makeToast(this, "暂无权限")
-                }
-            });
+        MyPermissions(this,object : MyPermissions.ResultListen{
+            override fun allow() {
+                getPhoto()
+            }
+
+            override fun ban() {
+                MyToast().makeToast(this@FeedBackActivity, "暂无权限")
+            }
+
+        }).getPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA)
     }
-
-
 
 
     fun getPhoto() {

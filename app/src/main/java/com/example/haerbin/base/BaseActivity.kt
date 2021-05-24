@@ -28,7 +28,6 @@ abstract class BaseActivity : AppCompatActivity() {
         loaddingView = LoadingDialogView(this)
         HeConfig.init("HE2103031652421650", "28eceb74711a4cf9ba4dccf1b8b3fa81");
         HeConfig.switchToDevService();
-        getWeather()
         initData()
 
     }
@@ -93,7 +92,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    fun getWeather() {
+    fun getWeather() :String {
+        var result=""
         QWeather.getWeatherNow(
             this,
             "127.157593,44.919418",
@@ -102,13 +102,17 @@ abstract class BaseActivity : AppCompatActivity() {
             object : OnResultWeatherNowListener {
                 override fun onError(e: Throwable) {
                     Log.e("错误", "getWeather onError: $e")
+                    result = "数据异常"
                 }
 
                 override fun onSuccess(weatherBean: WeatherNowBean) {
                     Log.e("天气结果", weatherBean.now.temp)
+                    result = weatherBean.now.temp
                 }
             })
+        return result
     }
+
 
     fun toast(txt: String) {
         MyToast().makeToast(this, txt)

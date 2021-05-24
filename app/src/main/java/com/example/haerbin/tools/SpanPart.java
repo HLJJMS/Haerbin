@@ -1,5 +1,7 @@
 package com.example.haerbin.tools;
 
+import com.tbruyelle.rxpermissions3.RxPermissions;
+
 /**
  * span 样式记录
  */
@@ -18,5 +20,9 @@ public class SpanPart extends FontStyle {
         this.isStreak = fontStyle.isStreak;
         this.isUnderline = fontStyle.isUnderline;
         this.fontSize = fontStyle.fontSize;
+
+
     }
+
+
 }

@@ -11,18 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.diwaves.news.tools.MyGlide;
 import com.example.haerbin.R;
+import com.example.haerbin.bean.HomeBean;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
 
 
-public class MyBannerAdapter extends BannerAdapter<String, MyBannerAdapter.ImageHolder> {
+public class MyBannerAdapter extends BannerAdapter<HomeBean.Banner, MyBannerAdapter.ImageHolder> {
 
     private Context context;
     private OnClickItemListener onClickItemListener;
 
-    public MyBannerAdapter(List<String> datas, Context context) {
+    public MyBannerAdapter(List<HomeBean.Banner> datas, Context context) {
         super(datas);
         this.context = context;
     }
@@ -33,13 +35,13 @@ public class MyBannerAdapter extends BannerAdapter<String, MyBannerAdapter.Image
     }
 
     @Override
-    public void onBindView(ImageHolder holder, String data, int position, int size) {
-        Glide.with(context).load(data).into(holder.imageView);
-
+    public void onBindView(ImageHolder holder, HomeBean.Banner data, int position, int size) {
+        MyGlide.Companion.loadImage(context, data.getPicurl(), holder.imageView);
+        holder.title.setText(data.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickItemListener.clickItemListener(data);
+                onClickItemListener.clickItemListener(data.getLinkurl());
             }
         });
     }

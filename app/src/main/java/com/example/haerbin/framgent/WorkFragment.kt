@@ -8,10 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.haerbin.R
-import com.example.haerbin.activity.GovermentListActivity
-import com.example.haerbin.activity.GuideWorkActivity
-import com.example.haerbin.activity.MapActivity
-import com.example.haerbin.activity.PrivateDoWorkActivity
+import com.example.haerbin.activity.*
 import com.example.haerbin.adapter.GovermentServiceAdapter
 import com.example.haerbin.bean.GovermentServiceBean
 import kotlinx.android.synthetic.main.activity_goverment_service.*
@@ -75,7 +72,14 @@ class WorkFragment : Fragment() {
                 Intent(context, MapActivity::class.java)
             )
         )
-        list.add(GovermentServiceBean(R.mipmap.ic_notice, "公告信息", Intent()))
+        list.add(
+            GovermentServiceBean(
+                R.mipmap.ic_notice, "公告信息", Intent(
+                    context,
+                    NoticeListActivity::class.java
+                )
+            )
+        )
         adapters.setList(list)
         adapters.setOnItemClickListener() { adapter, view, position ->
             startActivity(adapters.data.get(position).intent)

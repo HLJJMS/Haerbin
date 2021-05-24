@@ -1,5 +1,6 @@
 package com.example.haerbin.network;
 
+import com.example.haerbin.activity.MyBean;
 import com.example.haerbin.bean.AnonuncementListBean;
 import com.example.haerbin.bean.ComplaintBean;
 import com.example.haerbin.bean.DepartMentDetailBean;
@@ -7,10 +8,15 @@ import com.example.haerbin.bean.DepartmentListBean;
 import com.example.haerbin.bean.DoWorkDetailBean;
 import com.example.haerbin.bean.EmptyBean;
 import com.example.haerbin.bean.ErrorBean;
+import com.example.haerbin.bean.HandyDetailBean;
 import com.example.haerbin.bean.HandyListBean;
+import com.example.haerbin.bean.HomeBean;
 import com.example.haerbin.bean.LeadListBean;
 import com.example.haerbin.bean.LoginBean;
+import com.example.haerbin.bean.NewsDetailBean;
 import com.example.haerbin.bean.NewsListBean;
+import com.example.haerbin.bean.NoticeBean;
+import com.example.haerbin.bean.NoticeDetailBean;
 import com.example.haerbin.bean.PrivateDoWorkBean;
 import com.example.haerbin.bean.PrivateListTwoBean;
 import com.example.haerbin.bean.RegisterBean;
@@ -138,5 +144,29 @@ public interface MyService {
     @GET(Api.GUIDE_DETAIL)
     Call<DoWorkDetailBean> leadDetail(@Query("guide_id") String guide_id);
 
+    @GET(Api.ARTUCLE_DETAIL)
+    Call<NewsDetailBean> newsDetail(@Query("article_id") String article_id);
 
+    @GET(Api.HOME_INDEX)
+    Call<HomeBean> home();
+
+    @GET(Api.MY_INFO)
+    Call<MyBean> my();
+
+    @GET(Api.HADY_DETAIL)
+    Call<HandyDetailBean> hadyDetail(@Query("handy_id") String handy_id);
+
+
+    @GET(Api.NOTICE_LIST)
+    Call<NoticeBean> noticeList();
+
+    @GET(Api.NOTICE_DETAIL)
+    Call<NoticeDetailBean> noticeDetail(@Query("notice_id") String notice_id);
+
+
+    @GET(Api.AGREEMENT)
+    Call<NoticeDetailBean> agreement(@Query("page_id") String page_id);
+
+    @GET(Api.UPDATE_HEADIMG)
+    Call<EmptyBean> editImage(@Query("headimgurl") String headimgurl);
 }

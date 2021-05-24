@@ -84,7 +84,7 @@ public class HandyListBean {
         }
 
         public static class ListDTO implements MultiItemEntity {
-            public ListDTO(Integer handyId, String title, String linkurl, String icon, int type) {
+            public ListDTO(String handyId, String title, String linkurl, String icon, int type) {
                 this.handyId = handyId;
                 this.title = title;
                 this.linkurl = linkurl;
@@ -100,7 +100,7 @@ public class HandyListBean {
              */
 
             @SerializedName("handy_id")
-            private Integer handyId;
+            private String handyId;
             @SerializedName("title")
             private String title;
             @SerializedName("linkurl")
@@ -117,11 +117,11 @@ public class HandyListBean {
                 this.type = type;
             }
 
-            public Integer getHandyId() {
+            public String getHandyId() {
                 return handyId;
             }
 
-            public void setHandyId(Integer handyId) {
+            public void setHandyId(String handyId) {
                 this.handyId = handyId;
             }
 

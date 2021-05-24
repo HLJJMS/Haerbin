@@ -24,6 +24,31 @@ class SettingActivity : BaseActivity() {
         tv_editpsw.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             startActivity(Intent(this, EditPswActivity::class.java))
         }
+
+        tv_argment.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(this, AgreementActivity::class.java).putExtra(
+                    "type",
+                    "1"
+                )
+            )
+        }
+
+
+        tv_secret.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(this, AgreementActivity::class.java).putExtra(
+                    "type",
+                    "2"
+                )
+            )
+        }
+
+        tv_cache.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            toast("清除成功")
+        }
     }
 
 }
+
+

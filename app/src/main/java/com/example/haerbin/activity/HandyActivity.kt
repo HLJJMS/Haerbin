@@ -1,5 +1,6 @@
 package com.example.haerbin.activity
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diwaves.news.tools.MyToast
@@ -15,7 +16,7 @@ import retrofit2.Response
 
 
 class HandyActivity : BaseActivity() {
-    var adapter: HandyAdapter = HandyAdapter()
+    var adapters: HandyAdapter = HandyAdapter()
     var list: MutableList<HandyListBean.ListDTOX.ListDTO> = arrayListOf()
     override fun initLayout(): Int {
         return R.layout.activity_handy
@@ -26,7 +27,28 @@ class HandyActivity : BaseActivity() {
             finish()
         }
         recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = adapter
+        recycler.adapter = adapters
+        adapters.setOnItemClickListener { adapter, view, position ->
+            if (null != adapters.data.get(position).linkurl && !
+                adapters.data.get(position).linkurl.equals("")
+            ) {
+                startActivity(
+                    Intent(
+                        this,
+                        GMWebActivity::class.java
+                    ).putExtra("url", adapters.data.get(position).linkurl)
+                )
+            }else{
+               startActivity(
+                    Intent(
+                        this,
+                        GMWebActivity::class.java
+                    ).putExtra("id", adapters.data.get(position).handyId)
+                )
+            }
+
+
+        }
     }
 
     override fun initData() {
@@ -46,7 +68,7 @@ class HandyActivity : BaseActivity() {
                     for (index in 0..response.body()!!.list.size-1) {
                         list.add(
                             HandyListBean.ListDTOX.ListDTO(
-                                -1,
+                                "-1",
                                 response.body()!!.list.get(index).title,
                                 "",
                                 "",
@@ -67,7 +89,7 @@ class HandyActivity : BaseActivity() {
                             )
                         }
                     }
-                    adapter.setList(list)
+                    adapters.setList(list)
                 } else {
                     MyToast().makeToast(this@HandyActivity, response.body()?.msg.toString())
                 }

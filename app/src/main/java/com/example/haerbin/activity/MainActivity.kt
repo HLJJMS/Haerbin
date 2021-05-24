@@ -2,14 +2,12 @@ package com.example.haerbin.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.diwaves.news.tools.LoaddingView
 import com.diwaves.news.tools.SPToll
 import com.example.haerbin.R
 import com.example.haerbin.adapter.HomePageAdapter
@@ -19,7 +17,6 @@ import com.example.haerbin.framgent.HomeFragment
 import com.example.haerbin.framgent.InterationFragment
 import com.example.haerbin.framgent.MyFragment
 import com.example.haerbin.framgent.WorkFragment
-import com.example.haerbin.tools.LoadingDialogView
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.jakewharton.rxbinding3.view.clicks
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,6 +58,9 @@ class MainActivity : BaseActivity() {
         buttonList.add(iv_work)
         buttonList.add(iv_interaction)
         buttonList.add(iv_my)
+        val bundle = Bundle()
+        bundle.putString("weather",getWeather())
+        homeFragment.arguments = bundle
         mFragments.add(homeFragment)
         mFragments.add(workFragment)
         mFragments.add(interactionFragment)

@@ -1,5 +1,6 @@
 package com.example.haerbin.activity
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diwaves.news.tools.MyGlide
@@ -25,6 +26,9 @@ class NewsListActivity : BaseActivity() {
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapters
         MyGlide.loadImage(this,"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3391498281,3823931926&fm=26&gp=0.jpg",iv_title)
+        adapters.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(this,NewsDetailActivity::class.java).putExtra("id",adapters.data.get(position).articleId.toString()))
+        }
     }
 
     override fun initData() {

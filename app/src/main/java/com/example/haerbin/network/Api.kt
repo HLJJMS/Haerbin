@@ -12,6 +12,9 @@ object Api {
     //公告列表
     const val NOTICE_LIST = "notice/index"
 
+    //首页
+    const val HOME_INDEX = "index/index"
+
     //手机号登录
     const val PHONE_LOGIN = "user/login"
 
@@ -92,5 +95,21 @@ object Api {
 
     //办事详情
     const val  GUIDE_DETAIL ="guide/detail"
+
+
+    //新闻详情
+    const val  ARTUCLE_DETAIL ="article/detail"
+
+    //我的
+    const val MY_INFO ="user/stat"
+
+
+    const val  HADY_DETAIL ="handy/detail"
+
+    const val  AGREEMENT ="common/get_page_content"
+
+    const val  NOTICE_DETAIL ="notice/detail"
+
+    const val  UPDATE_HEADIMG ="user/update_headimgurl"
 
 }

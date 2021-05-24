@@ -3,6 +3,7 @@ package com.example.haerbin.activity
 import android.os.CountDownTimer
 import android.util.Log
 import com.diwaves.news.tools.MyToast
+import com.example.haerbin.BuildConfig
 import com.example.haerbin.R
 import com.example.haerbin.base.BaseActivity
 import com.example.haerbin.bean.EmptyBean
