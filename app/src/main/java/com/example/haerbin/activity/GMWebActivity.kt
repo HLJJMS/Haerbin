@@ -11,7 +11,6 @@ import com.example.haerbin.base.BaseActivity
 import com.example.haerbin.bean.HandyDetailBean
 import com.example.haerbin.network.MyRetrofit
 import kotlinx.android.synthetic.main.activity_gmweb.*
-import kotlinx.android.synthetic.main.fragment_my.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

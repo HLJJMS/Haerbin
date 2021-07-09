@@ -32,7 +32,7 @@ import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 class HomeFragment : Fragment() {
-
+    var textList = arrayListOf<HomeBean.Article>()
     private var adapters: HomeHandlyHAdapter = HomeHandlyHAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                     Intent(
                         context,
                         GMWebActivity::class.java
-                    ).putExtra("id", adapters.data.get(position).handyId)
+                    ).putExtra("id", adapters.data.get(position).handyId.toString())
                 )
             }
 
@@ -144,7 +144,7 @@ class HomeFragment : Fragment() {
         }
         cl_bg1.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             startActivity(
-                Intent(activity, AnnouncementListActivity::class.java)
+                Intent(activity, NewsListActivity::class.java)
             )
         }
         iv_public_resources.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
@@ -168,17 +168,22 @@ class HomeFragment : Fragment() {
                 Intent(activity, AskActivity::class.java)
             )
         }
-        cl_bg1.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
-            startActivity(
-                Intent(activity, NewsListActivity::class.java)
+        tv_centigrade.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            var url =
+                "http://m.baidu.com/sf?pd=life_compare_weather&openapi=1&dspName=iphone&from_sf=1&resource_id=5378&word=%E5%93%88%E5%B0%94%E6%BB%A8&title=15%E5%A4%A9%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5&weather_id=101050112&selectedDay=2021-06-19&kv_id=39399&lid=8420979396361057598&referlid=8420979396361057598&ms=1&frsrcid=4982&frorder=1&ssid=0&from=1269a&uid=0&pu=usm@2,sz@320_1004,ta@iphone_2_10.0_11_14.7&bd_page_type=1&baiduid=14650AF3DD8F92154C7B2E2304B5EE9A&tj=ms_weather_1_0_10_l1"
+            startActivity(Intent(context, GMWebActivity::class.java).putExtra("url", url))
+        }
+
+        tb_new.setItemOnClickListener { data, position ->
+            activity?.startActivity(
+                Intent(
+                    context,
+                    GMWebActivity::class.java
+                ).putExtra("id",textList[position].articleId.toString())
             )
         }
-//        tv_centigrade.text = arguments?.getString("weather")
         getWeather()
     }
-
-
-
 
 
     fun getData() {
@@ -192,10 +197,21 @@ class HomeFragment : Fragment() {
                 if (response.body()?.code == 1) {
                     adapters?.setList(response.body()!!.handy)
                     aboutBanner(response.body()!!.banner)
+                    aboutTextBanner(response.body()!!.article)
+
                 }
             }
 
         })
+    }
+
+    private fun aboutTextBanner(list: List<HomeBean.Article>) {
+        textList.addAll(list)
+        var list1 = arrayListOf<String>()
+        for (index in 0..list.size - 1) {
+            list1.add(list[index].title)
+        }
+        tb_new.setDatas(list1)
     }
 
     private fun aboutBanner(datas: List<HomeBean.Banner>) {
@@ -211,7 +227,6 @@ class HomeFragment : Fragment() {
         )
         myBeannerAdapter.setOnClickItemListener(object : MyBannerAdapter.OnClickItemListener {
             override fun clickItemListener(url: String?) {
-
                 if (null != url && !url.equals("")) {
                     activity?.startActivity(
                         Intent(
@@ -225,7 +240,6 @@ class HomeFragment : Fragment() {
     }
 
     fun getWeather() {
-
         QWeather.getWeatherNow(
             activity,
             "127.157593,44.919418",
@@ -239,7 +253,7 @@ class HomeFragment : Fragment() {
 
                 override fun onSuccess(weatherBean: WeatherNowBean) {
                     Log.e("天气结果", weatherBean.now.temp)
-                    tv_centigrade.text = weatherBean.now.temp
+                    tv_centigrade.text = weatherBean.now.temp + "℃ " + weatherBean.now.text
                 }
             })
 

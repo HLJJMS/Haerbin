@@ -1,13 +1,20 @@
 package com.example.haerbin.activity
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.baidu.location.BDAbstractLocationListener
+import com.baidu.location.BDLocation
+import com.baidu.location.LocationClient
+import com.baidu.location.LocationClientOption
+import com.diwaves.news.tools.MyToast
 import com.diwaves.news.tools.SPToll
 import com.example.haerbin.R
 import com.example.haerbin.adapter.HomePageAdapter
@@ -17,12 +24,18 @@ import com.example.haerbin.framgent.HomeFragment
 import com.example.haerbin.framgent.InterationFragment
 import com.example.haerbin.framgent.MyFragment
 import com.example.haerbin.framgent.WorkFragment
+import com.example.haerbin.tools.GMDialogView
+import com.example.haerbin.tools.MyPermissions
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.jakewharton.rxbinding3.view.clicks
+import kotlinx.android.synthetic.main.activity_error.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
+    var mLocationClient: LocationClient? = null
+    var myListener: MyLocationListener = MyLocationListener()
     val mFragments = ArrayList<Fragment>()
     var mTabEntities =
         ArrayList<CustomTabEntity>()
@@ -59,7 +72,7 @@ class MainActivity : BaseActivity() {
         buttonList.add(iv_interaction)
         buttonList.add(iv_my)
         val bundle = Bundle()
-        bundle.putString("weather",getWeather())
+        bundle.putString("weather", getWeather())
         homeFragment.arguments = bundle
         mFragments.add(homeFragment)
         mFragments.add(workFragment)
@@ -114,6 +127,10 @@ class MainActivity : BaseActivity() {
             }
 
         })
+        if(SPToll(this).getFrist()){
+            showDialog()
+
+        }
     }
 
     fun setButton(i: Int) {
@@ -140,7 +157,87 @@ class MainActivity : BaseActivity() {
 
     }
 
+    fun showDialog(){
+        var dialog = GMDialogView(this)
+        dialog.setOnClickCancle(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                finish()
+                dialog.dismiss()
+            }
+
+        }).setOnClickConfirm(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                SPToll(this@MainActivity).setFrist()
+                dialog.dismiss()
+            }
+
+        }).show()
+    }
+
+
     override fun initData() {
+        MyPermissions(this, object : MyPermissions.ResultListen {
+            override fun allow() {
+                startLocation()
+            }
+
+            override fun ban() {
+                MyToast().makeToast(this@MainActivity, "暂无权限")
+            }
+
+        }).getPermissions(
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+    }
+
+    fun startLocation() {
+        mLocationClient = LocationClient(getApplicationContext());
+        //声明LocationClient类
+        mLocationClient!!.registerLocationListener(myListener);
+        //注册监听函数
+        var option = LocationClientOption()
+        option.setScanSpan(1000);
+
+        option.setOpenGps(true);
+
+        option.setLocationNotify(true);
+
+        option.setIsNeedAddress(true);
+
+        option.setNeedNewVersionRgc(true);
+
+        option.setLocationMode(
+            LocationClientOption.LocationMode.Hight_Accuracy
+        );
+
+        mLocationClient!!.setLocOption(option);
+        mLocationClient!!.start();
+        myListener.setBeng(object : MyLocationListener.BengLe {
+            override fun bengkui() {
+                v_mengban.visibility = View.VISIBLE
+            }
+
+        })
+    }
+
+
+    class MyLocationListener : BDAbstractLocationListener() {
+        var bengLe: BengLe? = null
+        override fun onReceiveLocation(location: BDLocation) {
+            var city = location.city //获取城市
+            if (null == city) {
+//                bengLe!!.bengkui()
+            }
+        }
+
+        fun setBeng(beng: BengLe) {
+            this.bengLe = beng
+        }
+
+        interface BengLe {
+            fun bengkui()
+        }
 
     }
+
 }

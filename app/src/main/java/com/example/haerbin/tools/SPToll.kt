@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 class SPToll(context: Context) {
     val NAME = "SPSzh"
     val ID = "id"
+    val FRIST = "frist"
     val PHONE = "phone"
     val PASSWORD = "password"
     val TOKEN = "token"
@@ -32,6 +33,15 @@ class SPToll(context: Context) {
 
     fun getPassword(): String {
         return preferences.getString(PASSWORD, "").toString()
+    }
+
+    fun getFrist(): Boolean {
+        return preferences.getBoolean(FRIST, true)
+    }
+
+    fun setFrist(){
+        editor.putBoolean(FRIST, false);
+        editor.commit()
     }
 
     fun setPassWord(password: String) {

@@ -1,7 +1,5 @@
 package com.example.haerbin.tools
 
-import android.app.Activity
-import android.app.Application
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent

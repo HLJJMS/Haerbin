@@ -88,7 +88,6 @@
             app:layout_constraintTop_toBottomOf="@id/iv_work" />
 
 
-
         <TextView
             android:id="@+id/tv_interaction"
             android:layout_width="wrap_content"
@@ -117,4 +116,14 @@
             app:layout_constraintTop_toBottomOf="@id/iv_my" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/v_mengban"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_2CA4D9"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

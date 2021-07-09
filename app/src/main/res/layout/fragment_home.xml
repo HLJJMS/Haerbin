@@ -134,53 +134,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_1"
+                <com.superluo.textbannerlibrary.TextBannerView
+                    android:id="@+id/tb_new"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="陈萌山来我市调研粮食生产..."
-                    android:textColor="#ff666666"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_hot"
                     app:layout_constraintEnd_toStartOf="@id/iv_go"
-                    app:layout_constraintStart_toEndOf="@id/v_1" />
-
-                <View
-                    android:id="@+id/v_1"
-                    android:layout_width="5dp"
-                    android:layout_height="5dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/bg_blue_point"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_1"
                     app:layout_constraintStart_toEndOf="@id/iv_hot"
-                    app:layout_constraintTop_toTopOf="@id/tv_1" />
-
-                <View
-                    android:id="@+id/v_2"
-                    android:layout_width="5dp"
-                    android:layout_height="5dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/bg_blue_point"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_2"
-                    app:layout_constraintStart_toEndOf="@id/iv_hot"
-                    app:layout_constraintTop_toTopOf="@id/tv_2" />
-
-                <TextView
-                    android:id="@+id/tv_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="陈萌山来我市调研粮食生产..."
-                    android:textColor="#ff666666"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@id/iv_go"
-                    app:layout_constraintStart_toEndOf="@id/v_2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/iv_hot" />
 
                 <ImageView
                     android:id="@+id/iv_go"

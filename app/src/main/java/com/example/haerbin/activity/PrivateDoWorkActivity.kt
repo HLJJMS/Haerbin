@@ -40,7 +40,7 @@ class PrivateDoWorkActivity : BaseActivity() {
         }
         recyclerH.adapter = adapterH
         recyclerV.layoutManager = LinearLayoutManager(this)
-        adapterV.setOnItemChildClickListener { adapter, view, position ->
+        adapterV.setOnItemClickListener { adapter, view, position ->
             startActivity(
                 Intent(this, WorkDetailActivity::class.java).putExtra(
                     "id",

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="400dp"
+    android:background="@drawable/bg_solidwhite_10">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="隐私条款"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_ok"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/tv_txt"
+                android:text="
+
+欢迎您在“五常市政务服务无忧办”注册APP用户！\n
+
+ 
+
+1. 服务内容\n
+
+ 
+
+1.1服务的具体内容由五常市无忧办政务服务APP根据实际情况提供。五常市无忧办政务服务APP保留随时变更、中断或终止部分或全部网络服务的权利。目前为注册用户提供以下服务：\n
+
+ 
+
+（一）办理：登录本应用在线查询各事项办理过程信息。\n
+（二）查询：查看、内容检索。\n
+（三）查看：查看办件公示、公告信息。\n
+
+2. 使用规则 \n
+2.1 用户在五常市无忧办政务服务APP注册时，需提供准确的个人资料，如个人资料有任何变动，请及时更新。\n
+2.2 用户注册成功后，该用户帐号和密码由用户负责保管；用户应当对以其用户帐号进行的所有活动和事件负法律责任。\n
+
+ 
+
+2.3 用户在五常市政务服务注册后，必须遵循以下原则：\n
+(a) 遵守中国有关的法律和法规；\n
+(b) 不得为任何非法目的而使用网络服务系统；\n
+(c) 遵守所有与网络服务有关的网络协议、规定和程序；\n
+(d) 不得利用哈尔滨政务服务进行任何可能对互联网的正常运转造成不利影响的行为；\n
+(e) 不得利用哈尔滨政务服务传输任何骚扰性的、中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的或其他任何非法的信息资料；\n
+(f) 不得利用哈尔滨政务服务进行任何不利于哈尔滨政务服务的行为；\n
+
+ 
+
+3. 内容所有权\n
+3.1 五常市无忧办政务服务APP提供的网络服务内容可能包括：文字、软件、声音、图片、录象、图表等。所有这些内容受版权、商标和其它财产所有权法律的保护。\n
+3.2 用户不能擅自复制、再造这些内容、或创造与内容有关的派生产品。\n
+
+ 
+4. 隐私保护\n
+4.1 保护用户隐私是哈尔滨政务服务的一项基本政策，五常市无忧办政务服务APP保证不对外公开或向第三方提供用户注册资料及用户在使用网络服务时存储在五常市无忧办政务服务APP的非公开内容，但下列情况除外：\n
+(a) 事先获得用户的明确授权；\n
+(b) 根据有关的法律法规要求；\n
+(c) 按照相关政府主管部门的要求；\n
+(d) 为维护社会公众的利益；\n
+(e) 为维护哈尔滨政务服务的合法权益。\n
+
+ 
+5.免责声明\n
+5.1用户明确同意其使用五常市无忧办政务服务APP所存在的风险将完全由其自己承担；因其使用五常市无忧办政务服务APP而产生的一切后果也由其自己承担，五常市无忧办政务服务APP对用户不承担任何责任。\n
+5.2 五常市无忧办政务服务APP不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不作担保。\n
+
+"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/tv_no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="取消"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_ok"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_solidblue_radius10_bottom_end"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="确定"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_no" />
+</androidx.constraintlayout.widget.ConstraintLayout>

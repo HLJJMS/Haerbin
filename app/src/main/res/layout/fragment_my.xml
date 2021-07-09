@@ -318,6 +318,7 @@
 
             <ImageView
                 android:id="@+id/iv_rz"
+                android:visibility="gone"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="18dp"
@@ -327,7 +328,7 @@
                 app:layout_constraintTop_toTopOf="@id/rz" />
 
             <TextView
-                android:id="@+id/rz"
+                android:id="@+id/rz"     android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
@@ -340,7 +341,7 @@
 
             <TextView
                 android:id="@+id/tv_rz"
-                android:layout_width="wrap_content"
+                android:layout_width="wrap_content"     android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 android:text="1个不通过"
@@ -353,7 +354,7 @@
                 android:layout_width="1dp"
                 android:layout_height="30dp"
                 android:background="@color/color_DFDFDF"
-                app:layout_constraintBottom_toBottomOf="@id/iv_rz"
+                app:layout_constraintBottom_toBottomOf="@id/iv_rz"     android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/guide"
                 app:layout_constraintTop_toTopOf="@id/iv_rz" />
 
@@ -361,7 +362,7 @@
                 android:id="@+id/iv_change"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="18dp"     android:visibility="gone"
                 android:src="@mipmap/ic_my_company_change"
                 app:layout_constraintBottom_toBottomOf="@id/tv_change"
                 app:layout_constraintStart_toStartOf="@id/guide"
@@ -369,7 +370,7 @@
 
             <TextView
                 android:id="@+id/change"
-                android:layout_width="wrap_content"
+                android:layout_width="wrap_content"     android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:text="切换企业"
@@ -382,7 +383,7 @@
                 android:id="@+id/tv_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="11dp"     android:visibility="gone"
                 android:text="1个不通过"
                 android:textColor="#ffb1b1b1"
                 app:layout_constraintStart_toStartOf="@id/change"

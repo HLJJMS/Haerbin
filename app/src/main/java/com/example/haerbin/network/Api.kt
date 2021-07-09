@@ -103,6 +103,8 @@ object Api {
     //我的
     const val MY_INFO ="user/stat"
 
+    //我的头像
+    const val USER_INFO ="user/info"
 
     const val  HADY_DETAIL ="handy/detail"
 
@@ -111,5 +113,9 @@ object Api {
     const val  NOTICE_DETAIL ="notice/detail"
 
     const val  UPDATE_HEADIMG ="user/update_headimgurl"
+
+    const val  UPDATE_PERSON ="user/update_person"
+
+    const val  UPDATE_COMPANY ="user/update_company"
 
 }

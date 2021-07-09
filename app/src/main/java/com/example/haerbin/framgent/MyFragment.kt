@@ -14,12 +14,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.diwaves.news.tools.MyGlide
 import com.diwaves.news.tools.MyToast
+import com.diwaves.news.tools.SPToll
 import com.example.haerbin.R
-import com.example.haerbin.activity.ErrorListActivity
-import com.example.haerbin.activity.FeedBackActivity
-import com.example.haerbin.activity.MyBean
-import com.example.haerbin.activity.SettingActivity
+import com.example.haerbin.activity.*
 import com.example.haerbin.bean.EmptyBean
+import com.example.haerbin.bean.MyInfoBean
 import com.example.haerbin.network.MyRetrofit
 import com.example.haerbin.tools.LoadingDialogView
 import com.example.haerbin.tools.MyPermissions
@@ -92,7 +91,7 @@ class MyFragment : Fragment() {
                 )
             )
         }
-        fault.setOnClickListener {
+        fault.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             startActivity(
                 Intent(
                     activity,
@@ -100,12 +99,27 @@ class MyFragment : Fragment() {
                 ).putExtra("title", "我的纠错")
             )
         }
+        info.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            startActivity(
+                Intent(
+                    activity,
+                    EditInfoActivity::class.java
+                )
+            )
+        }
+
+        register.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
+            SPToll(context as FragmentActivity).setToken("")
+            startActivity(Intent(activity, RegisterActivity::class.java))
+        }
+
+
         iv_head.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             getPermissions()
         }
 
         loaddingView = context?.let { LoadingDialogView(it.applicationContext) }
-
+        getData()
     }
 
     fun getData() {
@@ -126,6 +140,28 @@ class MyFragment : Fragment() {
             }
 
         })
+
+        MyRetrofit(context).service.userInfo().enqueue(object :
+            Callback<MyInfoBean> {
+            override fun onFailure(call: Call<MyInfoBean>, t: Throwable) {
+                Log.e("异常", t.toString())
+            }
+
+            override fun onResponse(call: Call<MyInfoBean>, response: Response<MyInfoBean>) {
+                if (response.body()?.code == 1) {
+                    MyGlide.loadImageCircle(
+                        requireActivity().applicationContext,
+                        response.body()!!.data.headimgurl,
+                        iv_head
+                    )
+                    tv_name.setText(response.body()!!.data.username)
+                    tv_phone.setText(response.body()!!.data.mobile)
+
+                }
+            }
+
+        })
+
     }
 
 
@@ -143,6 +179,8 @@ class MyFragment : Fragment() {
             }
 
         })
+
+
     }
 
     fun getPermissions() {

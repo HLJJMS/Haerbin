@@ -13,6 +13,7 @@ import com.example.haerbin.bean.HandyListBean;
 import com.example.haerbin.bean.HomeBean;
 import com.example.haerbin.bean.LeadListBean;
 import com.example.haerbin.bean.LoginBean;
+import com.example.haerbin.bean.MyInfoBean;
 import com.example.haerbin.bean.NewsDetailBean;
 import com.example.haerbin.bean.NewsListBean;
 import com.example.haerbin.bean.NoticeBean;
@@ -169,4 +170,18 @@ public interface MyService {
 
     @GET(Api.UPDATE_HEADIMG)
     Call<EmptyBean> editImage(@Query("headimgurl") String headimgurl);
+
+
+    @GET(Api.USER_INFO)
+    Call<MyInfoBean> userInfo();
+
+
+    @POST(Api.UPDATE_PERSON)
+    @FormUrlEncoded
+    Call<EmptyBean> updataPerson(@Field("username") String username, @Field("realname") String realname,@Field("idtype") String idtype, @Field("idcard") String idcard,@Field("mobile") String mobile,@Field("prov") String prov, @Field("city") String city, @Field("area") String area,@Field("address") String address,@Field("email") String email);
+
+    @POST(Api.UPDATE_COMPANY)
+    @FormUrlEncoded
+    Call<EmptyBean> updataCompany(@Field("username") String username, @Field("realname") String realname,@Field("idtype") String idtype, @Field("idcard") String idcard,@Field("mobile") String mobile,@Field("prov") String prov, @Field("city") String city, @Field("area") String area,@Field("address") String address,@Field("email") String email,@Field("business_license") String business_license,@Field("credit_code") String credit_code,@Field("legal_idtype") String legal_idtype,@Field("legal_realname") String legal_realname,@Field("legal_idcard") String legal_idcard,@Field("fax") String fax);
+
 }
