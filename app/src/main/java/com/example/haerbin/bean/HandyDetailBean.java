@@ -58,6 +58,8 @@ public class HandyDetailBean {
         @SerializedName("linkurl")
         private String linkurl;
 
+
+
         public int getHandyId() {
             return handyId;
         }

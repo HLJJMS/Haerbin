@@ -35,6 +35,7 @@ class NewsDetailActivity : BaseActivity() {
                 ) {
                     if (response.body()?.code == 1) {
                         tv_title.setText(response.body()!!.data.title)
+                        titleBar.setCenterText(response.body()!!.data.title)
                         tv_time.setText(response.body()!!.data.source + "  " + response.body()!!.data.createTime)
                         wb_detail.loadDataWithBaseURL(null,response.body()!!.data.content,"text/html" , "utf-8", null);
                     } else {

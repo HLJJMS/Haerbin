@@ -19,6 +19,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints">
+        <View
+            android:background="@color/qmui_config_color_50_blue"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
         <ImageView
             android:id="@+id/iv_home"

@@ -117,6 +117,7 @@ class WorkDetailActivity : BaseActivity() {
                 if (response.body()?.code == 1) {
                     adapters.setList(response.body()!!.cate.get(0).list)
                     list = response.body()!!.cate
+                    tv_title.setText(response.body()!!.data.itemName)
 
                 }
                 toast(response.body()?.msg.toString())

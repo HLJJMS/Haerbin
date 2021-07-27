@@ -138,6 +138,9 @@
                     android:id="@+id/tb_new"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    app:barrierDirection="start"
+                    app:setSingleLine="true"
+                    app:setDirection="bottom_to_top"
                     android:gravity="center"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
@@ -158,8 +161,8 @@
 
             <ImageView
                 android:id="@+id/iv_government"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:src="@mipmap/ic_government"
                 app:layout_constraintEnd_toStartOf="@id/iv_convenience"
@@ -168,8 +171,8 @@
 
             <ImageView
                 android:id="@+id/iv_convenience"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:src="@mipmap/ic_convenience"
                 app:layout_constraintEnd_toStartOf="@id/iv_work_search"
@@ -178,8 +181,8 @@
 
             <ImageView
                 android:id="@+id/iv_work_search"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:src="@mipmap/ic_work_search"
                 app:layout_constraintEnd_toStartOf="@id/iv_public_resources"
@@ -188,8 +191,8 @@
 
             <ImageView
                 android:id="@+id/iv_public_resources"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:src="@mipmap/ic_public_resources"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +222,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="办事查询"
+                android:text="公示信息"
                 android:textColor="#ff333333"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/iv_work_search"
@@ -329,8 +332,8 @@
 
                 <ImageView
                     android:id="@+id/iv_register"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_register"
                     app:layout_constraintEnd_toStartOf="@id/iv_estate"
                     app:layout_constraintStart_toStartOf="parent"
@@ -338,8 +341,8 @@
 
                 <ImageView
                     android:id="@+id/iv_estate"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_estate"
                     app:layout_constraintEnd_toStartOf="@id/iv_inverst"
                     app:layout_constraintStart_toEndOf="@id/iv_register"
@@ -347,8 +350,8 @@
 
                 <ImageView
                     android:id="@+id/iv_inverst"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_inverst"
                     app:layout_constraintEnd_toStartOf="@id/iv_agricultrue"
                     app:layout_constraintStart_toEndOf="@id/iv_estate"
@@ -356,8 +359,8 @@
 
                 <ImageView
                     android:id="@+id/iv_agricultrue"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_agricultrue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_inverst"
@@ -414,8 +417,8 @@
 
                 <ImageView
                     android:id="@+id/iv_traffic"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_traffic"
                     app:layout_constraintEnd_toStartOf="@id/iv_public_service"
                     app:layout_constraintStart_toStartOf="parent"
@@ -423,8 +426,8 @@
 
                 <ImageView
                     android:id="@+id/iv_public_service"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_public_service"
                     app:layout_constraintEnd_toStartOf="@id/iv_society"
                     app:layout_constraintStart_toEndOf="@id/iv_traffic"
@@ -432,8 +435,8 @@
 
                 <ImageView
                     android:id="@+id/iv_society"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_society"
                     app:layout_constraintEnd_toStartOf="@id/iv_more"
                     app:layout_constraintStart_toEndOf="@id/iv_public_service"
@@ -441,8 +444,8 @@
 
                 <ImageView
                     android:id="@+id/iv_more"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:src="@mipmap/ic_more"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_society"

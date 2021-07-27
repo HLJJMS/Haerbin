@@ -39,6 +39,7 @@ class MapActivity : BaseActivity() {
     val BAIDU_PACKAGENAME = "com.baidu.BaiduMap"
     val GAODE_PACKAGENAME = "com.autonavi.minimap"
     val TENCENT_PACKAGENAME = "com.tencent.map"
+    var pageNo=1
     override fun initLayout(): Int {
         return R.layout.activity_map
     }
@@ -56,6 +57,12 @@ class MapActivity : BaseActivity() {
         tv_go.clicks().throttleFirst(500, TimeUnit.MILLISECONDS).subscribe {
             baiduGuide(this)
         }
+        adapter.loadMoreModule.isAutoLoadMore = true
+        adapter.loadMoreModule.isEnableLoadMoreIfNotFullPage = true
+        adapter.loadMoreModule.setOnLoadMoreListener {
+            pageNo++
+            initData()
+        }
     }
 
     override fun initData() {
@@ -69,7 +76,7 @@ class MapActivity : BaseActivity() {
 
     //列表
     fun getList() {
-        MyRetrofit(this).service.departmentList("", 1).enqueue(object : Callback<DepartmentListBean> {
+        MyRetrofit(this).service.departmentList("", pageNo).enqueue(object : Callback<DepartmentListBean> {
             override fun onFailure(call: Call<DepartmentListBean>, t: Throwable) {
                 Log.e("异常", t.toString())
             }
@@ -79,7 +86,12 @@ class MapActivity : BaseActivity() {
                 response: Response<DepartmentListBean>
             ) {
                 if (response.body()?.code == 1) {
-                    adapter.setList(response.body()!!.list.data)
+                    if(response.body()!!.list.data.size==0){
+                        adapter.loadMoreModule.loadMoreEnd(true)
+                    }else{
+                        adapter.addData(response.body()!!.list.data)
+                        adapter.loadMoreModule.loadMoreComplete()
+                    }
                 } else {
                     MyToast().makeToast(this@MapActivity, response.body()?.msg.toString())
                 }

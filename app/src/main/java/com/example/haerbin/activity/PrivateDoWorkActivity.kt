@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.diwaves.news.tools.MyToast
 import com.example.haerbin.R
 import com.example.haerbin.adapter.PrivateToDoHAdapter
 import com.example.haerbin.adapter.PrivateToDoVAdapter
@@ -20,6 +21,8 @@ import retrofit2.Response
 class PrivateDoWorkActivity : BaseActivity() {
     var adapterH: PrivateToDoHAdapter = PrivateToDoHAdapter()
     var adapterV: PrivateToDoVAdapter = PrivateToDoVAdapter()
+    var page = 1
+    var vid = ""
     override fun initLayout(): Int {
         return R.layout.activity_private_do_work
     }
@@ -36,8 +39,11 @@ class PrivateDoWorkActivity : BaseActivity() {
         manager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerH.layoutManager = manager
         adapterH.setOnItemClickListener { adapter, view, position ->
-            getDataV(adapterH.data.get(position).cateId)
+            vid = adapterH.data.get(position).cateId
+            page = 1
+            getDataV()
         }
+
         recyclerH.adapter = adapterH
         recyclerV.layoutManager = LinearLayoutManager(this)
         adapterV.setOnItemClickListener { adapter, view, position ->
@@ -47,6 +53,12 @@ class PrivateDoWorkActivity : BaseActivity() {
                     adapterV.data.get(position).guideId.toString()
                 )
             )
+        }
+        adapterV.loadMoreModule.isAutoLoadMore = true
+        adapterV.loadMoreModule.isEnableLoadMoreIfNotFullPage = true
+        adapterV.loadMoreModule.setOnLoadMoreListener {
+            page++
+            getDataV()
         }
         recyclerV.adapter = adapterV
     }
@@ -73,7 +85,9 @@ class PrivateDoWorkActivity : BaseActivity() {
                 ) {
                     if (response.body()?.code == 1 && response.body()!!.list.size != 0) {
                         adapterH.setList(response.body()!!.list)
-                        getDataV(adapterH.data.get(0).cateId)
+                        vid = adapterH.data.get(0).cateId
+                        page = 1
+                        getDataV()
                     }
                     toast(response.body()?.msg.toString())
                     hideLoading()
@@ -83,9 +97,9 @@ class PrivateDoWorkActivity : BaseActivity() {
     }
 
 
-    fun getDataV(id: String) {
+    fun getDataV() {
         MyRetrofit(this).service.privateToV(
-            "", "", id, "", "", ""
+            "", "", vid, "", "", page.toString()
         )
             .enqueue(object :
                 Callback<PrivateListTwoBean> {
@@ -98,10 +112,26 @@ class PrivateDoWorkActivity : BaseActivity() {
                     response: Response<PrivateListTwoBean>
                 ) {
                     if (response.body()?.code == 1) {
-                        adapterV.setList(response.body()!!.list.data)
+                        if (response.body()!!.list.data.size >0) {
+                            if (page == 1) {
+                                adapterV.setList(response.body()!!.list.data)
+                                adapterV.loadMoreModule.loadMoreComplete()
+                            } else {
+                                adapterV.addData(response.body()!!.list.data)
+                                adapterV.loadMoreModule.loadMoreComplete()
+                            }
+                        } else {
+                            if(page==1){
+                                adapterV.setList(arrayListOf())
+                            }
+                            adapterV.loadMoreModule.loadMoreEnd(true)
+                        }
+                    } else {
+                        MyToast().makeToast(
+                            this@PrivateDoWorkActivity,
+                            response.body()?.msg.toString()
+                        )
                     }
-                    toast(response.body()?.msg.toString())
-//                    hideLoading()
                 }
 
             })

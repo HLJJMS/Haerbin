@@ -21,6 +21,7 @@ import com.qweather.sdk.bean.base.Unit
 import com.qweather.sdk.bean.weather.WeatherNowBean
 import com.qweather.sdk.view.HeConfig
 import com.qweather.sdk.view.QWeather
+import com.superluo.textbannerlibrary.TextBannerView
 import com.youth.banner.config.BannerConfig
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
@@ -212,6 +213,7 @@ class HomeFragment : Fragment() {
             list1.add(list[index].title)
         }
         tb_new.setDatas(list1)
+
     }
 
     private fun aboutBanner(datas: List<HomeBean.Banner>) {

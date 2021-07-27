@@ -81,7 +81,17 @@ class GMWebActivity : BaseActivity() {
 
             override fun onResponse(call: Call<HandyDetailBean>, response: Response<HandyDetailBean>) {
                 if (response.body()?.code == 1) {
-                    wb.loadDataWithBaseURL(null, response.body()!!.data.content, "text/html" , "utf-8", null)
+                    if(null!=response.body()!!.data.linkurl&&!response.body()!!.data.linkurl.equals("")){
+                        wb.loadUrl(response.body()!!.data.linkurl)
+                    }else {
+                        wb.loadDataWithBaseURL(
+                            null,
+                            response.body()!!.data.content,
+                            "text/html",
+                            "utf-8",
+                            null
+                        )
+                    }
                 }
             }
 

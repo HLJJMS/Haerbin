@@ -17,6 +17,7 @@ import retrofit2.Response
 
 class NewsListActivity : BaseActivity() {
     var adapters = NewsListAdapter()
+    var pageNo = 1
     override fun initLayout(): Int {
         return R.layout.activity_news_list
     }
@@ -25,9 +26,53 @@ class NewsListActivity : BaseActivity() {
         titleBar.setBackClick { finish() }
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapters
-        MyGlide.loadImage(this,"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3391498281,3823931926&fm=26&gp=0.jpg",iv_title)
         adapters.setOnItemClickListener { adapter, view, position ->
-            startActivity(Intent(this,NewsDetailActivity::class.java).putExtra("id",adapters.data.get(position).articleId.toString()))
+            startActivity(
+                Intent(this, NewsDetailActivity::class.java).putExtra(
+                    "id",
+                    adapters.data.get(position).articleId.toString()
+                )
+            )
+        }
+        adapters.loadMoreModule.isAutoLoadMore = true
+        adapters.loadMoreModule.isEnableLoadMoreIfNotFullPage = true
+        adapters.loadMoreModule.setOnLoadMoreListener {
+            pageNo++
+            initData()
+        }
+        tv_search.setOnClickListener {
+            pageNo = 1
+            getData()
+        }
+        iv_title.setOnClickListener {
+            if(adapters.data.size>0){
+                startActivity(
+                    Intent(this, NewsDetailActivity::class.java).putExtra(
+                        "id",
+                        adapters.data.get(0).articleId.toString()
+                    )
+                )
+            }
+        }
+        tv_title.setOnClickListener {
+            if(adapters.data.size>0){
+                startActivity(
+                    Intent(this, NewsDetailActivity::class.java).putExtra(
+                        "id",
+                        adapters.data.get(0).articleId.toString()
+                    )
+                )
+            }
+        }
+        tv_news.setOnClickListener {
+            if(adapters.data.size>1){
+                startActivity(
+                    Intent(this, NewsDetailActivity::class.java).putExtra(
+                        "id",
+                        adapters.data.get(1).articleId.toString()
+                    )
+                )
+            }
         }
     }
 
@@ -36,8 +81,7 @@ class NewsListActivity : BaseActivity() {
     }
 
     fun getData() {
-
-        MyRetrofit(this).service.newsList(1, "")
+        MyRetrofit(this).service.newsList(pageNo, et_search.text.toString())
             .enqueue(object :
                 Callback<NewsListBean> {
                 override fun onFailure(call: Call<NewsListBean>, t: Throwable) {
@@ -49,7 +93,26 @@ class NewsListActivity : BaseActivity() {
                     response: Response<NewsListBean>
                 ) {
                     if (response.body()?.code == 1) {
-                        adapters.setList(response.body()!!.list.data)
+                        if (response.body()!!.list.data.size == 0) {
+                            adapters.loadMoreModule.loadMoreEnd(true)
+                        } else {
+                            adapters.addData(response.body()!!.list.data)
+                            adapters.loadMoreModule.loadMoreComplete()
+                            if(pageNo==1){
+                                if (response.body()!!.list.data.size > 0) {
+                                    MyGlide.loadImage(
+                                        this@NewsListActivity,
+                                        response.body()!!.list.data[0].picurl,
+                                        iv_title
+                                    )
+                                    tv_title.setText(response.body()!!.list.data[0].title)
+                                }
+                                if (response.body()!!.list.data.size > 1) {
+                                    tv_news.setText(response.body()!!.list.data[1].title)
+                                }
+                            }
+
+                        }
                     } else {
                         MyToast().makeToast(this@NewsListActivity, response.body()?.msg.toString())
                     }

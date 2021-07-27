@@ -15,6 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GovermentListActivity : BaseActivity() {
+    var pageNo=1
     var adapters = DepartAdapter()
     override fun initLayout(): Int {
         return R.layout.activity_goverment_list
@@ -23,6 +24,12 @@ class GovermentListActivity : BaseActivity() {
     override fun initView() {
         recycler.adapter = adapters
         recycler.layoutManager = LinearLayoutManager(this)
+        adapters.loadMoreModule.isAutoLoadMore = true
+        adapters.loadMoreModule.isEnableLoadMoreIfNotFullPage = true
+        adapters.loadMoreModule.setOnLoadMoreListener {
+            pageNo++
+            initData()
+        }
         titleBar.setBackClick { finish() }
         adapters.setOnItemClickListener { adapter, view, position ->
             startActivity(Intent(this,WorkListActivity::class.java).putExtra("id",adapters.data.get(position).departmentId))
@@ -30,13 +37,8 @@ class GovermentListActivity : BaseActivity() {
     }
 
     override fun initData() {
-
-    }
-
-    override fun onResume() {
-        super.onResume()
         showLoading()
-        MyRetrofit(this).service.departmentList("", 1).enqueue(object :
+        MyRetrofit(this).service.departmentList("", pageNo).enqueue(object :
             Callback<DepartmentListBean> {
             override fun onFailure(call: Call<DepartmentListBean>, t: Throwable) {
                 Log.e("异常", t.toString())
@@ -47,7 +49,13 @@ class GovermentListActivity : BaseActivity() {
                 response: Response<DepartmentListBean>
             ) {
                 if (response.body()?.code == 1) {
-                    adapters.setList(response.body()!!.list.data)
+                    if(response.body()!!.list.data.size==0){
+                        adapters.loadMoreModule.loadMoreEnd(true)
+                    }else{
+                        adapters.addData(response.body()!!.list.data)
+                        adapters.loadMoreModule.loadMoreComplete()
+                    }
+
                 } else {
                     MyToast().makeToast(this@GovermentListActivity, response.body()?.msg.toString())
                 }
@@ -56,5 +64,7 @@ class GovermentListActivity : BaseActivity() {
 
         })
     }
+
+
 
 }

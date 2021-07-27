@@ -3,6 +3,7 @@ package com.example.haerbin.activity
 import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.diwaves.news.tools.MyToast
 import com.example.haerbin.R
 import com.example.haerbin.adapter.PrivateToDoVAdapter
 import com.example.haerbin.base.BaseActivity
@@ -15,6 +16,7 @@ import retrofit2.Response
 
 class WorkListActivity : BaseActivity() {
     var adapterV: PrivateToDoVAdapter = PrivateToDoVAdapter()
+    var page = 1
     override fun initLayout(): Int {
         return R.layout.activity_work_list
     }
@@ -31,13 +33,19 @@ class WorkListActivity : BaseActivity() {
                 )
             )
         }
+        adapterV.loadMoreModule.isAutoLoadMore = true
+        adapterV.loadMoreModule.isEnableLoadMoreIfNotFullPage = true
+        adapterV.loadMoreModule.setOnLoadMoreListener {
+            page++
+            initData()
+        }
     }
 
 
     override fun initData() {
         showLoading()
         MyRetrofit(this).service.privateToV(
-            "", "", "", intent.getStringExtra("id"), "", ""
+            "", "", "", intent.getStringExtra("id"), "", page.toString()
         )
             .enqueue(object :
                 Callback<PrivateListTwoBean> {
@@ -50,10 +58,15 @@ class WorkListActivity : BaseActivity() {
                     response: Response<PrivateListTwoBean>
                 ) {
                     if (response.body()?.code == 1) {
-                        adapterV.setList(response.body()!!.list.data)
+                        if(response.body()!!.list.data.size==0){
+                            adapterV.loadMoreModule.loadMoreEnd(true)
+                        }else{
+                            adapterV.addData(response.body()!!.list.data)
+                            adapterV.loadMoreModule.loadMoreComplete()
+                        }
+                    } else {
+                        MyToast().makeToast(this@WorkListActivity, response.body()?.msg.toString())
                     }
-                    toast(response.body()?.msg.toString())
-                    hideLoading()
                 }
 
             })

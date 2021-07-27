@@ -118,4 +118,6 @@ object Api {
 
     const val  UPDATE_COMPANY ="user/update_company"
 
+    const val HOT_KEY="common/get_web_config?varname=hot_keywords"
+
 }

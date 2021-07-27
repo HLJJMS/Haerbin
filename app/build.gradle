@@ -104,7 +104,7 @@ dependencies {
 
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
 
-    implementation'com.superluo:textbannerview:1.0.4'
+    implementation 'com.superluo:textbannerview:1.0.5'
     //友盟基础库相关依赖（必须）
 //    api 'com.umeng.umsdk:common:9.3.8'
 //    implementation 'com.umeng.umsdk:asms:1.2.2'
