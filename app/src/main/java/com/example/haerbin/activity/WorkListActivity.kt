@@ -43,7 +43,6 @@ class WorkListActivity : BaseActivity() {
 
 
     override fun initData() {
-        showLoading()
         MyRetrofit(this).service.privateToV(
             "", "", "", intent.getStringExtra("id"), "", page.toString()
         )
